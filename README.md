@@ -1,1 +1,1 @@
-# MTS_fintech_homework
+# Дмитрий Росляков
