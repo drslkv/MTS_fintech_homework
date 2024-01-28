@@ -37,7 +37,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
      * @param animal AbstractAnimal, подробности которого будут выведены.
      */
     public void printAnimalDetails(AbstractAnimal animal) {
-        System.out.println("Created: " + animal.getBreed() + " " + animal.getName() + " " +
+        System.out.println(animal.getBreed() + " " + animal.getName() + " " +
                 animal.getCharacter() + " " + animal.getCost() + " " + animal.getBirthDate());
     }
 

@@ -21,9 +21,7 @@ public class SearchAnimalServiceImpl implements SearchAnimalService {
         List<AbstractAnimal> leapYearNamesList = new ArrayList<>();
 
         for (AbstractAnimal animal : animals) {
-            int birthYear = animal.getBirthDate().getYear();
-
-            if (LocalDate.of(birthYear, 1, 1).isLeapYear()) {
+            if (animal.getBirthDate().isLeapYear()) {
                 leapYearNamesList.add(animal);
             }
         }

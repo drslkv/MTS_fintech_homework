@@ -26,7 +26,7 @@ public abstract class AbstractAnimal implements Animal{
         if (!(obj instanceof Animal))
             return false;
         Animal animal = (Animal) obj;
-        return breed.equals(animal.getBreed()) && breed.equals(animal.getName())
+        return breed.equals(animal.getBreed()) && name.equals(animal.getName())
                 && birthDate.equals(animal.getBirthDate());
     }
 }
