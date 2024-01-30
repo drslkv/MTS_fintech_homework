@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-5">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/searchAnimal/SearchAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/searchAnimal/SearchAnimalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/searchAnimal/SearchAnimalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/searchAnimal/SearchAnimalServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-5 (правки)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +81,7 @@
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.SearchMethodTests.findDuplicateValidInput">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="MTS_fintech_homework.main" />
@@ -231,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706472459831</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="дз-5 (правки)">
+      <option name="closed" value="true" />
+      <created>1706624314649</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706624314649</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,6 +263,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="дз-4" />
     <MESSAGE value="дз-5" />
-    <option name="LAST_COMMIT_MESSAGE" value="дз-5" />
+    <MESSAGE value="дз-5 (правки)" />
+    <option name="LAST_COMMIT_MESSAGE" value="дз-5 (правки)" />
   </component>
 </project>
