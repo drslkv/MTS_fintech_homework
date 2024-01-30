@@ -58,18 +58,30 @@ public class SearchAnimalServiceImpl implements SearchAnimalService {
      * @param animals Массив животных для проверки на дубликаты.
      */
     @Override
-    public void findDuplicate(AbstractAnimal[] animals) {
+    public List<String> findDuplicate(AbstractAnimal[] animals) {
         Set<String> uniqueAnimalsSet = new HashSet<>();
+        List<String> duplicates = new ArrayList<>();
 
         for (AbstractAnimal animal : animals) {
             String key = animal.getName() + " " + animal.getCharacter();
 
             if (uniqueAnimalsSet.contains(key)) {
-                System.out.println("Duplicate name and character found: "
-                        + animal.getName() + " " + animal.getCharacter());
+                duplicates.add("Duplicate name and character found: " + animal.getName()
+                        + " " + animal.getCharacter());
             } else {
                 uniqueAnimalsSet.add(key);
             }
+        }
+
+        return duplicates;
+    }
+
+    @Override
+    public void printDuplicate(AbstractAnimal[] animals) {
+        List<String> duplicates = findDuplicate(animals);
+
+        for (String duplicate : duplicates) {
+            System.out.println(duplicate);
         }
     }
 }

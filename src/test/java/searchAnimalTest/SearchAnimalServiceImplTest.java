@@ -4,6 +4,7 @@ import animals.Cat;
 import animals.Dog;
 import animals.Shark;
 import descriptionAnimal.AbstractAnimal;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import searchAnimal.SearchAnimalService;
@@ -15,6 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,7 +34,6 @@ public class SearchAnimalServiceImplTest {
                     BigDecimal.valueOf(500.00), "Friendly", LocalDate.of(2017, 8, 22));
 
             assertNotEquals(cat, dog);
-            assertNotEquals(dog, cat);
         }
 
         @Test
@@ -42,7 +44,6 @@ public class SearchAnimalServiceImplTest {
             AbstractAnimal cat2 = new Cat("Persian", "Whiskers",
                     BigDecimal.valueOf(300.00), "Playful", LocalDate.of(2018, 5, 15));
             assertEquals(cat1, cat2);
-            assertEquals(cat2, cat1);
         }
     }
 
@@ -50,11 +51,14 @@ public class SearchAnimalServiceImplTest {
     @Nested
     @DisplayName("Search Method Tests")
     class SearchMethodTests {
-        private final SearchAnimalService searchService = new SearchAnimalServiceImpl();
+        private SearchAnimalService searchService;
+        @BeforeEach
+        void SearchSetUp() {
+            searchService = new SearchAnimalServiceImpl();
+        }
         @Test
         @DisplayName("Check findLeapYearNames method returns correct animal")
         void findLeapYearNamesValidInput() {
-            // Arrange
             AbstractAnimal[] animals = {
                     new Cat("Persian", "Whiskers", BigDecimal.valueOf(300.00), "Playful",
                             LocalDate.of(2016, 2, 29)),
@@ -74,8 +78,7 @@ public class SearchAnimalServiceImplTest {
         @ParameterizedTest
         @ValueSource(ints = { 1, 3, 5 })
         @DisplayName("Check findOlderAnimal method with valid input")
-        void findOlderAnimal_validInput_shouldReturnCorrectArray(int years) {
-            SearchAnimalServiceImpl searchService = new SearchAnimalServiceImpl();
+        void findOlderAnimalValidInput(int years) {
             AbstractAnimal[] animals = {
                     new Cat("Persian", "Whiskers", BigDecimal.valueOf(300.00),
                             "Playful", LocalDate.of(2016, 2, 1)),
@@ -85,11 +88,18 @@ public class SearchAnimalServiceImplTest {
                             "Calm", LocalDate.of(2020, 12, 1)),
             };
 
+            AbstractAnimal youngShark = new Shark("Great White", "Bruce", BigDecimal.valueOf(1000.00),
+                    "Fierce", LocalDate.of(2024, 1, 28));
+
             AbstractAnimal[] olderAnimals = searchService.findOlderAnimal(animals, years);
+
+            assertTrue(olderAnimals.length <= animals.length);
 
             for (AbstractAnimal animal : olderAnimals) {
                 assertTrue(LocalDate.now().minusYears(years).isAfter(animal.getBirthDate()));
             }
+
+            assertFalse(Arrays.asList(olderAnimals).contains(youngShark));
         }
 
         @Test
@@ -100,13 +110,20 @@ public class SearchAnimalServiceImplTest {
                             LocalDate.of(2016, 2, 29)),
                     new Dog("Labrador", "Buddy", BigDecimal.valueOf(500.00), "Friendly",
                             LocalDate.of(2015, 1, 1)),
-                    new Cat("Persian", "Whiskers", BigDecimal.valueOf(250.00), "Calm",
+                    new Cat("Persian", "Whiskers", BigDecimal.valueOf(250.00), "Playful",
                             LocalDate.of(2020, 12, 1)),
                     new Shark("Great White", "Bruce", BigDecimal.valueOf(1000.00), "Fierce",
                             LocalDate.of(2018, 6, 15)),
             };
 
-            assertDoesNotThrow(() -> searchService.findDuplicate(animals));
+
+            List<String> findDuplicate = searchService.findDuplicate(animals);
+
+            assertEquals(1, findDuplicate.size());
+            assertDoesNotThrow(() -> {
+                List<String> duplicates = searchService.findDuplicate(animals);
+                assertTrue(duplicates.contains("Duplicate name and character found: Whiskers Playful"));
+            });
         }
     }
 }

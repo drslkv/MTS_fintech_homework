@@ -38,5 +38,6 @@ public class Main {
 
         System.out.println("\nduplicate search");
         searchService.findDuplicate(createdAnimals);
+        searchService.printDuplicate(createdAnimals);
     }
 }
