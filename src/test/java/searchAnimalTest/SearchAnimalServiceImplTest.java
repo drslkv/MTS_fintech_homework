@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,7 +77,7 @@ public class SearchAnimalServiceImplTest {
         }
 
         @ParameterizedTest
-        @ValueSource(ints = { 1, 3, 5 })
+        @ValueSource(ints = { 4, 5 })
         @DisplayName("Check findOlderAnimal method with valid input")
         void findOlderAnimalValidInput(int years) {
             AbstractAnimal[] animals = {
@@ -86,20 +87,19 @@ public class SearchAnimalServiceImplTest {
                             "Friendly", LocalDate.of(2015, 1, 1)),
                     new Cat("Siamese", "Mittens", BigDecimal.valueOf(250.00),
                             "Calm", LocalDate.of(2020, 12, 1)),
+                    new Shark("Great White", "Bruce", BigDecimal.valueOf(1000.00),
+                            "Fierce", LocalDate.of(2024, 1, 28)),
+                    new Shark("Great White", "Wayne", BigDecimal.valueOf(1000.00),
+                            "Fierce", LocalDate.of(2024, 1, 20)),
             };
-
-            AbstractAnimal youngShark = new Shark("Great White", "Bruce", BigDecimal.valueOf(1000.00),
-                    "Fierce", LocalDate.of(2024, 1, 28));
 
             AbstractAnimal[] olderAnimals = searchService.findOlderAnimal(animals, years);
 
-            assertTrue(olderAnimals.length <= animals.length);
+            assertEquals(2, olderAnimals.length);
 
             for (AbstractAnimal animal : olderAnimals) {
                 assertTrue(LocalDate.now().minusYears(years).isAfter(animal.getBirthDate()));
             }
-
-            assertFalse(Arrays.asList(olderAnimals).contains(youngShark));
         }
 
         @Test

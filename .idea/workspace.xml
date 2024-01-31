@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-5 (правки)" />
+    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-5 (правки)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,11 +80,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "feature/HW-4",
-    "last_opened_file_path": "C:/Users/rosly/Desktop/MTS_fintech_homework",
+    "last_opened_file_path": "C:/Users/rosly/Desktop/Pastebin",
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.SearchMethodTests.findOlderAnimalValidInput">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="MTS_fintech_homework.main" />
@@ -193,9 +196,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.SearchMethodTests.findOlderAnimalValidInput" />
         <item itemvalue="Gradle.SearchMethodTests.findDuplicateValidInput" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Gradle.SearchMethodTests.findOlderAnimalValidInput" />
         <item itemvalue="Gradle.SearchAnimalServiceImplTest" />
         <item itemvalue="Gradle.SearchMethodTests.findOlderAnimal_validInput_shouldReturnCorrectArray" />
       </list>
@@ -234,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706624314649</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="дз-5 (правки)">
+      <option name="closed" value="true" />
+      <created>1706624423900</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706624423900</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
