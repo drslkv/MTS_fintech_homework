@@ -1,23 +1,38 @@
 package searchAnimal;
 
+import createAnimal.CreateAnimalService;
 import descriptionAnimal.AbstractAnimal;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class SearchAnimalServiceImpl implements SearchAnimalService {
+@Repository
+public class AnimalsRepositoryImpl implements AnimalsRepository {
+    private final List<AbstractAnimal> animals = new ArrayList<>();
+
+    @Autowired
+    private CreateAnimalService createAnimalService;
+
+    @Override
+    public void addAll(List<AbstractAnimal> newAnimals) {
+        animals.addAll(newAnimals);
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        createAnimalService.addAnimalsRepository(this);
+    }
+
     /**
      * Находит животных с именами, соответствующими году високосного дня их даты рождения.
-     *
-     * @param animals Массив животных для поиска.
      * @return Массив животных с именами, соответствующими году високосного дня.
      */
     @Override
-    public AbstractAnimal[] findLeapYearNames(AbstractAnimal[] animals) {
+    public List<AbstractAnimal> findLeapYearNames() {
         List<AbstractAnimal> leapYearNamesList = new ArrayList<>();
 
         for (AbstractAnimal animal : animals) {
@@ -26,20 +41,18 @@ public class SearchAnimalServiceImpl implements SearchAnimalService {
             }
         }
 
-        return leapYearNamesList.toArray(new AbstractAnimal[0]);
+        return leapYearNamesList;
     }
 
     /**
      * Находит животных, которые старше заданного возраста.
      *
-     * @param animals Массив животных для поиска.
      * @param age     Возраст, с которым сравниваются животные.
      * @return Массив животных, старше заданного возраста.
      */
     @Override
-    public AbstractAnimal[] findOlderAnimal(AbstractAnimal[] animals, int age) {
+    public List<AbstractAnimal> findOlderAnimal(int age) {
         List<AbstractAnimal> olderAnimalsList = new ArrayList<>();
-
         LocalDate currentDate = LocalDate.now();
 
         for (AbstractAnimal animal : animals) {
@@ -49,18 +62,16 @@ public class SearchAnimalServiceImpl implements SearchAnimalService {
             }
         }
 
-        return olderAnimalsList.toArray(new AbstractAnimal[0]);
+        return olderAnimalsList;
     }
 
     /**
      * Находит дубликаты животных с одинаковым именем и характером.
-     *
-     * @param animals Массив животных для проверки на дубликаты.
      */
     @Override
-    public List<String> findDuplicate(AbstractAnimal[] animals) {
+    public Set<String> findDuplicate() {
         Set<String> uniqueAnimalsSet = new HashSet<>();
-        List<String> duplicates = new ArrayList<>();
+        Set<String> duplicates = new HashSet<>();
 
         for (AbstractAnimal animal : animals) {
             String key = animal.getName() + " " + animal.getCharacter();
@@ -77,9 +88,8 @@ public class SearchAnimalServiceImpl implements SearchAnimalService {
     }
 
     @Override
-    public void printDuplicate(AbstractAnimal[] animals) {
-        List<String> duplicates = findDuplicate(animals);
-
+    public void printDuplicate() {
+        Set<String> duplicates = findDuplicate();
         for (String duplicate : duplicates) {
             System.out.println(duplicate);
         }

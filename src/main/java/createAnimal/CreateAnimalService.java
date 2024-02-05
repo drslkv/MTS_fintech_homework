@@ -2,6 +2,7 @@ package createAnimal;
 
 import descriptionAnimal.AbstractAnimal;
 import descriptionAnimal.Animal;
+import searchAnimal.AnimalsRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,7 +19,8 @@ public interface CreateAnimalService {
         List<AbstractAnimal> animalsList = new ArrayList<>();
 
         while (uniqueAnimals.size() < 10  && iterations < 100) {
-            Animal animalFactory = getRandomAnimalFactory();
+            String type = getRandomAnimalType();
+            Animal animalFactory = getRandomAnimalFactory(type);
             AbstractAnimal animal = animalFactory.createAnimal("_" + uniqueAnimals.size(),
                     names[random.nextInt(names.length)],
                     BigDecimal.valueOf(random.nextDouble() * 1000),
@@ -37,8 +39,13 @@ public interface CreateAnimalService {
         return animalsList.toArray(new AbstractAnimal[0]);
     }
 
+    void setAnimalType(String animalType);
+
+    String getRandomAnimalType();
     void printAnimalDetails(AbstractAnimal animal);
-    Animal getRandomAnimalFactory();
+    Animal getRandomAnimalFactory(String type);
     AbstractAnimal[] createAnimals(int n);
     LocalDate randBirthDate();
+
+    void addAnimalsRepository(AnimalsRepository animalsRepository);
 }

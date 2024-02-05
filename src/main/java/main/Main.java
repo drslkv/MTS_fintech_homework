@@ -1,20 +1,22 @@
 package main;
 
+import config.animalConfig;
 import createAnimal.CreateAnimalService;
 import createAnimal.CreateAnimalServiceImpl;
 import descriptionAnimal.AbstractAnimal;
-import searchAnimal.SearchAnimalService;
-import searchAnimal.SearchAnimalServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import searchAnimal.AnimalsRepository;
 
 public class Main {
     public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(animalConfig.class);
+
+        AnimalsRepository animalsRepository = context.getBean(AnimalsRepository.class);
+
         CreateAnimalService animalService = new CreateAnimalServiceImpl();
         AbstractAnimal[] createdAnimals = animalService.createAnimals();
         AbstractAnimal[] createdAnimals1 = animalService.createAnimals(5);
-
-        SearchAnimalService searchService = new SearchAnimalServiceImpl();
-        AbstractAnimal[] leapYearNames = searchService.findLeapYearNames(createdAnimals);
-        AbstractAnimal[] olderAnimals = searchService.findOlderAnimal(createdAnimals, 5);
 
         System.out.println("CREATE");
         for (AbstractAnimal animal : createdAnimals) {
@@ -27,17 +29,12 @@ public class Main {
 
         System.out.println("\nSEARCH");
         System.out.println("leap year search");
-        for (AbstractAnimal animal : leapYearNames) {
-            animalService.printAnimalDetails(animal);
-        }
+        animalsRepository.findLeapYearNames().forEach(animalService::printAnimalDetails);
 
         System.out.println("\nage search");
-        for (AbstractAnimal animal : olderAnimals) {
-            animalService.printAnimalDetails(animal);
-        }
+        animalsRepository.findOlderAnimal(5).forEach(animalService::printAnimalDetails);
 
         System.out.println("\nduplicate search");
-        searchService.findDuplicate(createdAnimals);
-        searchService.printDuplicate(createdAnimals);
+        animalsRepository.printDuplicate();
     }
 }

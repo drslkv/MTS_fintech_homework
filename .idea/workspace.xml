@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-5 (правки)">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/config/AnimalPostBeanProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/config/animalConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/createAnimal/CreateAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/createAnimal/CreateAnimalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/createAnimal/CreateAnimalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/createAnimal/CreateAnimalServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/searchAnimal/SearchAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/searchAnimal/AnimalsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/searchAnimal/SearchAnimalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/searchAnimal/AnimalsRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,18 +88,22 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "feature/HW-4",
     "last_opened_file_path": "C:/Users/rosly/Desktop/Pastebin",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.SearchMethodTests.findOlderAnimalValidInput">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="MTS_fintech_homework.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
+          <option name="PATTERN" value="config.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -245,7 +258,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706624423900</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="дз-5 (правки)">
+      <option name="closed" value="true" />
+      <created>1706727438851</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706727438851</updated>
+    </task>
+    <task id="LOCAL-00006" summary="дз-5 (правки)">
+      <option name="closed" value="true" />
+      <created>1706727478047</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706727478047</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
