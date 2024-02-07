@@ -1,8 +1,7 @@
 package main;
 
-import config.animalConfig;
+import config.AnimalConfig;
 import createAnimal.CreateAnimalService;
-import createAnimal.CreateAnimalServiceImpl;
 import descriptionAnimal.AbstractAnimal;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,7 +11,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(animalConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AnimalConfig.class);
 
         CreateAnimalService animalService = context.getBean(CreateAnimalService.class);
         AbstractAnimal[] createdAnimals = animalService.createAnimals();

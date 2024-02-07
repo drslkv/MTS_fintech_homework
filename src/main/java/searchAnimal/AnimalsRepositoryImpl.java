@@ -2,7 +2,6 @@ package searchAnimal;
 
 import createAnimal.CreateAnimalService;
 import descriptionAnimal.AbstractAnimal;
-import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.beans.ConstructorProperties;
@@ -10,7 +9,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
-@Repository
+
 public class AnimalsRepositoryImpl implements AnimalsRepository {
     private final List<AbstractAnimal> animals;
     private final CreateAnimalService createAnimalService;

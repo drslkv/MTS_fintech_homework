@@ -39,13 +39,9 @@ public interface CreateAnimalService {
         return animalsList.toArray(new AbstractAnimal[0]);
     }
 
-    void setAnimalType(String animalType);
-
     String getRandomAnimalType();
     void printAnimalDetails(AbstractAnimal animal);
     Animal getRandomAnimalFactory(String type);
     AbstractAnimal[] createAnimals(int n);
     LocalDate randBirthDate();
-
-    void addAnimalsRepository(AnimalsRepository animalsRepository);
 }

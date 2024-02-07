@@ -8,7 +8,7 @@ import searchAnimal.AnimalsRepository;
 import searchAnimal.AnimalsRepositoryImpl;
 
 @Configuration
-public class animalConfig {
+public class AnimalConfig {
     @Bean
     public CreateAnimalService createAnimalService() {
         return new CreateAnimalServiceImpl();

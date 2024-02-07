@@ -6,8 +6,6 @@ import animals.Shark;
 import animals.Wolf;
 import descriptionAnimal.AbstractAnimal;
 import descriptionAnimal.Animal;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import searchAnimal.AnimalsRepository;
 
 import java.math.BigDecimal;
@@ -17,15 +15,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-@Component
-@Scope("prototype")
-public class CreateAnimalServiceImpl implements CreateAnimalService {
-    String animalType;
 
-    @Override
-    public void setAnimalType(String animalType) {
-        this.animalType = animalType;
-    }
+public class CreateAnimalServiceImpl implements CreateAnimalService {
     public String getRandomAnimalType() {
         String[] animalTypes = {"Cat", "Dog", "Shark", "Wolf"};
         return animalTypes[new Random().nextInt(animalTypes.length)];
@@ -141,11 +132,5 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         } while (uniqueAnimals.size() < 10 && iterations < 100);
 
         return animalsList.toArray(new AbstractAnimal[0]);
-    }
-
-    @Override
-    public void addAnimalsRepository(AnimalsRepository animalsRepository) {
-        List<AbstractAnimal> newAnimals = List.of(createAnimals(5));
-        animalsRepository.addAll(newAnimals);
     }
 }
