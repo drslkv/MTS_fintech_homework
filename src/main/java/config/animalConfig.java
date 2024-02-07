@@ -16,6 +16,6 @@ public class animalConfig {
 
     @Bean
     public AnimalsRepository animalsRepository() {
-        return new AnimalsRepositoryImpl();
+        return new AnimalsRepositoryImpl(createAnimalService());
     }
 }

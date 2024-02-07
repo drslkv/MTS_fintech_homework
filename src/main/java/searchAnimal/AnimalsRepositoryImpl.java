@@ -2,20 +2,24 @@ package searchAnimal;
 
 import createAnimal.CreateAnimalService;
 import descriptionAnimal.AbstractAnimal;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
+import java.beans.ConstructorProperties;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
 @Repository
 public class AnimalsRepositoryImpl implements AnimalsRepository {
-    private final List<AbstractAnimal> animals = new ArrayList<>();
+    private final List<AbstractAnimal> animals;
+    private final CreateAnimalService createAnimalService;
 
-    @Autowired
-    private CreateAnimalService createAnimalService;
+    @ConstructorProperties({"animals"})
+    public AnimalsRepositoryImpl(CreateAnimalService createAnimalService) {
+        this.animals = new ArrayList<>();
+        this.createAnimalService = createAnimalService;
+    }
 
     @Override
     public void addAll(List<AbstractAnimal> newAnimals) {
@@ -24,7 +28,8 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
 
     @PostConstruct
     public void postConstruct() {
-        createAnimalService.addAnimalsRepository(this);
+        AbstractAnimal[] createdAnimals = createAnimalService.createAnimals();
+        addAll(Arrays.asList(createdAnimals));
     }
 
     /**
@@ -93,5 +98,9 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         for (String duplicate : duplicates) {
             System.out.println(duplicate);
         }
+    }
+
+    public void addAnimals(List<AbstractAnimal> animals) {
+        this.animals.addAll(animals);
     }
 }

@@ -10,4 +10,5 @@ public interface AnimalsRepository {
     Set<String> findDuplicate();
     void printDuplicate();
     void addAll(List<AbstractAnimal> animals);
+    public void addAnimals(List<AbstractAnimal> animals);
 }
