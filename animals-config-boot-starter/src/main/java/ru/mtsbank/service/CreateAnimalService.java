@@ -1,8 +1,7 @@
-package createAnimal;
+package ru.mtsbank.service;
 
 import descriptionAnimal.AbstractAnimal;
 import descriptionAnimal.Animal;
-import searchAnimal.AnimalsRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -38,10 +37,9 @@ public interface CreateAnimalService {
 
         return animalsList.toArray(new AbstractAnimal[0]);
     }
-
-    String getRandomAnimalType();
-    void printAnimalDetails(AbstractAnimal animal);
-    Animal getRandomAnimalFactory(String type);
     AbstractAnimal[] createAnimals(int n);
+    String getRandomAnimalType();
+    Animal getRandomAnimalFactory(String type);
     LocalDate randBirthDate();
+    void printAnimalDetails(AbstractAnimal animal);
 }

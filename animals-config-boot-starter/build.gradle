@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.7'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'ru.mtsbank'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = '11'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation project(path: ':application')
+}
+
+tasks.register('prepareKotlinBuildScriptModel') {
+
+}
+

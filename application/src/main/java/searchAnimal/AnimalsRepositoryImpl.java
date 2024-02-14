@@ -1,7 +1,7 @@
 package searchAnimal;
 
-import createAnimal.CreateAnimalService;
 import descriptionAnimal.AbstractAnimal;
+import ru.mtsbank.service.CreateAnimalService;
 
 import javax.annotation.PostConstruct;
 import java.beans.ConstructorProperties;

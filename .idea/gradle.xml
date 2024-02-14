@@ -9,6 +9,28 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/animals-config-boot-starter" />
+            <option value="$PROJECT_DIR$/application" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/animals-config-boot-starter" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/animals-config-boot-starter" />
+            <option value="$PROJECT_DIR$/application" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/application" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/animals-config-boot-starter" />
+            <option value="$PROJECT_DIR$/application" />
           </set>
         </option>
       </GradleProjectSettings>

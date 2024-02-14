@@ -1,9 +1,9 @@
-package config;
+package ru.mtsbank.config;
 
-import createAnimal.CreateAnimalService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
+import ru.mtsbank.service.CreateAnimalService;
 
 @Component
 public class AnimalPostBeanProcessor implements BeanPostProcessor {
