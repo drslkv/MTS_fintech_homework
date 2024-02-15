@@ -17,10 +17,10 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter')
-    implementation project(path: ':application')
 }
 
 tasks.register('prepareKotlinBuildScriptModel') {
 
 }
 
+sourceCompatibility = '11'

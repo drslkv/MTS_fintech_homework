@@ -1,13 +1,14 @@
 package ru.mtsbank.service;
 
-import animals.Cat;
-import animals.Dog;
-import animals.Shark;
-import animals.Wolf;
-import descriptionAnimal.AbstractAnimal;
-import descriptionAnimal.Animal;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.mtsbank.animals.Cat;
+import ru.mtsbank.animals.Dog;
+import ru.mtsbank.animals.Shark;
+import ru.mtsbank.animals.Wolf;
 import ru.mtsbank.config.AnimalProperties;
+import ru.mtsbank.descriptionAnimal.AbstractAnimal;
+import ru.mtsbank.descriptionAnimal.Animal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -19,12 +20,17 @@ import java.util.concurrent.ThreadLocalRandom;
 import static ru.mtsbank.service.CreateAnimalService.*;
 
 @Service
-public class CreateAnimalServiceImpl {
+public class CreateAnimalServiceImpl implements CreateAnimalService {
     private final AnimalProperties animalProperties;
+    private final Random random;
 
     public CreateAnimalServiceImpl(AnimalProperties animalProperties) {
         this.animalProperties = animalProperties;
+        this.random = new Random();
     }
+
+    @Value("${animals.catNames}")
+    String[] names;
 
     public LocalDate randBirthDate() {
         LocalDate startDate = LocalDate.of(2010, 1, 1);

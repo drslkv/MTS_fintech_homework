@@ -1,6 +1,6 @@
-package searchAnimal;
+package ru.mtsbank.searchAnimal;
 
-import descriptionAnimal.AbstractAnimal;
+import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import ru.mtsbank.service.CreateAnimalService;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +14,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     private final List<AbstractAnimal> animals;
     private final CreateAnimalService createAnimalService;
 
-    @ConstructorProperties({"animals"})
+    @ConstructorProperties({"ru/mtsbank/animals"})
     public AnimalsRepositoryImpl(CreateAnimalService createAnimalService) {
         this.animals = new ArrayList<>();
         this.createAnimalService = createAnimalService;
@@ -29,6 +29,11 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     public void postConstruct() {
         AbstractAnimal[] createdAnimals = createAnimalService.createAnimals();
         addAll(Arrays.asList(createdAnimals));
+
+        System.out.println("CREATE");
+        for (AbstractAnimal animal : createdAnimals) {
+            createAnimalService.printAnimalDetails(animal);
+        }
     }
 
     /**

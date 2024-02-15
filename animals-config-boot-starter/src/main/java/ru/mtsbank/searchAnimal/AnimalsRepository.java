@@ -1,6 +1,6 @@
-package searchAnimal;
+package ru.mtsbank.searchAnimal;
 
-import descriptionAnimal.AbstractAnimal;
+import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import java.util.List;
 import java.util.Set;
 

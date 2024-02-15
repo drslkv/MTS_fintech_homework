@@ -12,22 +12,18 @@ public class AnimalProperties {
     private String wolfName;
 
     public String getDogName() {
-        String[] names = dogName.split(",");
-        return names[random.nextInt(names.length)].trim();
+        return dogName;
     }
 
     public String getCatName() {
-        String[] names = catName.split(",");
-        return names[random.nextInt(names.length)].trim();
+        return catName;
     }
 
     public String getSharkName() {
-        String[] names = sharkName.split(",");
-        return names[random.nextInt(names.length)].trim();
+        return sharkName;
     }
 
     public String getWolfName() {
-        String[] names = wolfName.split(",");
-        return names[random.nextInt(names.length)].trim();
+        return wolfName;
     }
 }

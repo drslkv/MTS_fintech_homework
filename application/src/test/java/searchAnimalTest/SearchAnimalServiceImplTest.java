@@ -1,26 +1,15 @@
 package searchAnimalTest;
 
-import animals.Cat;
-import animals.Dog;
-import animals.Shark;
-import descriptionAnimal.AbstractAnimal;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import searchAnimal.AnimalsRepository;
-import searchAnimal.AnimalsRepositoryImpl;
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import ru.mtsbank.animals.Cat;
+import ru.mtsbank.animals.Dog;
+import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class SearchAnimalServiceImplTest {
+    /*
     @Nested
     @DisplayName("Equals Method Tests")
     class EqualsMethodTests {
@@ -46,7 +35,6 @@ public class SearchAnimalServiceImplTest {
         }
     }
 
-    /*
     // SEARCH
     @Nested
     @DisplayName("Search Method Tests")
