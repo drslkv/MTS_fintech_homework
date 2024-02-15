@@ -11,7 +11,7 @@ import java.util.*;
 public interface CreateAnimalService {
     Set<String> uniqueAnimals = new HashSet<>();
     Random random = new Random();
-    // String[] names = {"Buddy", "Max", "Charlie", "Bella", "Lucy", "Daisy", "Rocky", "Luna"};
+    String[] names = {"Buddy", "Max", "Charlie", "Bella", "Lucy", "Daisy", "Rocky", "Luna"};
     String[] character = {"Aggressive", "Fierce", "Friendly", "Playful"};
 
     default AbstractAnimal[] createAnimals() {
@@ -21,9 +21,8 @@ public interface CreateAnimalService {
         while (uniqueAnimals.size() < 10) {
             String type = getRandomAnimalType();
             Animal animalFactory = getRandomAnimalFactory(type);
-            String name = "";
             AbstractAnimal animal = animalFactory.createAnimal("_" + uniqueAnimals.size(),
-                    name/* names[random.nextInt(names.length)] */,
+                    names[random.nextInt(names.length)],
                     BigDecimal.valueOf(random.nextDouble() * 1000),
                     character[random.nextInt(character.length)],
                     randBirthDate());

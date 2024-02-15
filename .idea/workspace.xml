@@ -4,29 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-6 (правки)">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-7 (версия, которая запускается)">
+      <change afterPath="$PROJECT_DIR$/application/src/main/java/scheduler/ScheduledTasks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/main/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/application/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/animals/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/animals/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Dog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/animals/Shark.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Shark.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/animals/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Wolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/descriptionAnimal/AbstractAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/descriptionAnimal/AbstractAnimal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/descriptionAnimal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/descriptionAnimal/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/descriptionAnimal/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/descriptionAnimal/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/descriptionAnimal/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/descriptionAnimal/Predator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/searchAnimal/AnimalsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/searchAnimal/AnimalsRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/java/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/main/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +93,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Gradle.Build MTS_fintech_homework.executor": "Run",
     "Gradle.Build application.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -222,7 +214,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706462898982</updated>
-      <workItem from="1708009771801" duration="3844000" />
+      <workItem from="1708009771801" duration="9293000" />
     </task>
     <task id="LOCAL-00001" summary="дз-4">
       <option name="closed" value="true" />
@@ -296,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707317105137</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="дз-7 (версия, которая запускается)">
+      <option name="closed" value="true" />
+      <created>1708013813504</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708013813504</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +331,8 @@
     <MESSAGE value="дз-5 (правки)" />
     <MESSAGE value="дз-6" />
     <MESSAGE value="дз-6 (правки)" />
-    <option name="LAST_COMMIT_MESSAGE" value="дз-6 (правки)" />
+    <MESSAGE value="дз-7 (версия, которая запускается)" />
+    <option name="LAST_COMMIT_MESSAGE" value="дз-7 (версия, которая запускается)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MTS_fintech_homework$App.ic" NAME="App Coverage Results" MODIFIED="1707810947258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

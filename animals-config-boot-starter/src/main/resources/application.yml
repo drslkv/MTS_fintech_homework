@@ -1,8 +1,9 @@
-animals:
-  catNames:
-    -Whiskers
-    -Fluffy
-    -Garfield
-  dogNames: Buddy,Max,Bailey
-  sharkNames: Whiskers,Fluffy,Garfield
-  wolfNames: Buddy,Max,Bailey
+animal:
+  cat:
+    names: barsik,persik
+  dog:
+    names: rex,buddy
+  shark:
+    names: rex,buddy
+  wolf:
+    names: barsik,persik

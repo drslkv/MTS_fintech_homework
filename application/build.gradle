@@ -14,6 +14,9 @@ repositories {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation project(path: ':animals-config-boot-starter')
+
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
 
 tasks.register('prepareKotlinBuildScriptModel') {

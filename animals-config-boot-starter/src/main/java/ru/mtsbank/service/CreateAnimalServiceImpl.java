@@ -29,9 +29,6 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         this.random = new Random();
     }
 
-    @Value("${animals.catNames}")
-    String[] names;
-
     public LocalDate randBirthDate() {
         LocalDate startDate = LocalDate.of(2010, 1, 1);
         LocalDate endDate = LocalDate.of(2023, 12, 31);
