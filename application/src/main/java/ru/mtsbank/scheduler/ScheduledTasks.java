@@ -16,7 +16,7 @@ public class ScheduledTasks {
     public ScheduledTasks(AnimalsRepository animalsRepository) {
         this.animalsRepository = animalsRepository;
     }
-    @Scheduled(fixedRate = 600)
+    @Scheduled(fixedRate = 60000)
     public void printAnimals() {
         List<AbstractAnimal> leapYearNames = animalsRepository.findLeapYearNames();
         List<AbstractAnimal> olderAnimals = animalsRepository.findOlderAnimal(5); // Пример возраста
