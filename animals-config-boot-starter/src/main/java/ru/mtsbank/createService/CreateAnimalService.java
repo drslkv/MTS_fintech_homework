@@ -1,6 +1,5 @@
-package ru.mtsbank.service;
+package ru.mtsbank.createService;
 
-import org.springframework.beans.factory.annotation.Value;
 import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import ru.mtsbank.descriptionAnimal.Animal;
 

@@ -16,4 +16,14 @@ public class Cat extends Pet {
                                        String character, LocalDate birthDate) {
         return new Cat("Cat" + breed, name, cost, character, birthDate);
     }
+
+    @Override
+    public String toString() {
+        return "Cat {" +
+                "name='" + getName() + '\'' +
+                ", cost='" + getCost() + '\'' +
+                ", character='" + getCharacter() + '\'' +
+                ", birthDate=" + getBirthDate() +
+                '}';
+    }
 }

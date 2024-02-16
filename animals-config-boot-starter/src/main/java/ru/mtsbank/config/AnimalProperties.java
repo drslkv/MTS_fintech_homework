@@ -5,8 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Random;
 
-import static ru.mtsbank.service.CreateAnimalService.random;
-
 @ConfigurationProperties(prefix = "animals")
 public class AnimalProperties {
     @Value("${animal.dog.names}")

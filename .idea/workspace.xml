@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-7 (версия, которая запускается)">
-      <change afterPath="$PROJECT_DIR$/application/src/main/java/scheduler/ScheduledTasks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/animals-config-boot-starter/setting.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/setting.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Dog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Shark.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Shark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Wolf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalPostBeanProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalPostBeanProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/createService/CreateAnimalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/service/CreateAnimalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/createService/CreateAnimalServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/application/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/src/main/java/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/main/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/java/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/ru/mtsbank/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/main/java/scheduler/ScheduledTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/ru/mtsbank/scheduler/ScheduledTasks.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +85,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -127,6 +134,12 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\rosly\Desktop\MTS_fintech_homework\animals-config-boot-starter" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rosly\Desktop\MTS_fintech_homework" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -149,12 +162,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
-      <module name="org.example.MTS_fintech_homework.main" />
+      <module name="MTS_fintech_homework.application.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
+          <option name="PATTERN" value="config.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,10 +177,10 @@
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
-      <module name="MTS_fintech_homework.application.main" />
+      <module name="org.example.MTS_fintech_homework.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="config.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -185,7 +198,7 @@
     </configuration>
     <configuration name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="MTS_fintech_homework.application.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="main.App" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.mtsbank.App" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -214,7 +227,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706462898982</updated>
-      <workItem from="1708009771801" duration="9293000" />
+      <workItem from="1708009771801" duration="14294000" />
     </task>
     <task id="LOCAL-00001" summary="дз-4">
       <option name="closed" value="true" />
@@ -296,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708013813504</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="дз-7 (версия, которая запускается)">
+      <option name="closed" value="true" />
+      <created>1708019890507</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708019890507</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

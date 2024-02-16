@@ -16,4 +16,14 @@ public class Wolf extends Predator {
                                        String character, LocalDate birthDate) {
         return new Wolf("Wolf" + breed, name, cost, character, birthDate);
     }
+
+    @Override
+    public String toString() {
+        return "Wolf {" +
+                "name='" + getName() + '\'' +
+                ", cost='" + getCost() + '\'' +
+                ", character='" + getCharacter() + '\'' +
+                ", birthDate=" + getBirthDate() +
+                '}';
+    }
 }

@@ -1,9 +1,9 @@
 animal:
   cat:
-    names: barsik,persik
+    names: Barsik, Persik, Kim
   dog:
-    names: rex,buddy
+    names: Rex, Buddy, Rachel
   shark:
-    names: rex,buddy
+    names: Suzanne, Gerry, Jim
   wolf:
-    names: barsik,persik
+    names: Victor, Vladimir, Puffy

@@ -16,4 +16,14 @@ public class Shark extends Predator {
                                        String character, LocalDate birthDate) {
         return new Shark("Shark" + breed, name, cost, character, birthDate);
     }
+
+    @Override
+    public String toString() {
+        return "Shark {" +
+                "name='" + getName() + '\'' +
+                ", cost='" + getCost() + '\'' +
+                ", character='" + getCharacter() + '\'' +
+                ", birthDate=" + getBirthDate() +
+                '}';
+    }
 }

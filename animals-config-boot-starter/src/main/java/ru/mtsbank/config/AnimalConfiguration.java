@@ -6,8 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import ru.mtsbank.searchAnimal.AnimalsRepository;
 import ru.mtsbank.searchAnimal.AnimalsRepositoryImpl;
-import ru.mtsbank.service.CreateAnimalService;
-import ru.mtsbank.service.CreateAnimalServiceImpl;
+import ru.mtsbank.createService.CreateAnimalServiceImpl;
 
 @Configuration
 @EnableConfigurationProperties(AnimalProperties.class)
