@@ -33,4 +33,20 @@ public class AnimalProperties {
     public String getWolfName() {
         return wolfName[random.nextInt(wolfName.length)];
     }
+
+    public void setDogName(String[] dogName) {
+        this.dogName = dogName;
+    }
+
+    public void setCatName(String[] catName) {
+        this.catName = catName;
+    }
+
+    public void setSharkName(String[] sharkName) {
+        this.sharkName = sharkName;
+    }
+
+    public void setWolfName(String[] wolfName) {
+        this.wolfName = wolfName;
+    }
 }

@@ -17,6 +17,10 @@ repositories {
 
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.mockito:mockito-core'
+    testImplementation 'org.assertj:assertj-core'
 }
 
 tasks.register('prepareKotlinBuildScriptModel') {
@@ -24,3 +28,7 @@ tasks.register('prepareKotlinBuildScriptModel') {
 }
 
 sourceCompatibility = '11'
+
+test {
+    useJUnitPlatform()
+}
