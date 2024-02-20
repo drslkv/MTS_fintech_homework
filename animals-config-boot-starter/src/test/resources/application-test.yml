@@ -1,0 +1,11 @@
+animal:
+  dog:
+    names: Bailey, Cooper, Daisy
+  cat:
+    names: Whiskers, Mittens, Luna
+  shark:
+    names: Bruce, Nemo, Dory
+  wolf:
+    names: Luna, Shadow, Rocky
+
+
