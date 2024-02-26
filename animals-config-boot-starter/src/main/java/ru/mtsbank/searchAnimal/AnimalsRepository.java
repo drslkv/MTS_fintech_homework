@@ -1,14 +1,12 @@
 package ru.mtsbank.searchAnimal;
 
 import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import java.util.List;
-import java.util.Set;
+
+import java.time.LocalDate;
+import java.util.Map;
 
 public interface AnimalsRepository {
-    List<AbstractAnimal> findLeapYearNames();
-    List<AbstractAnimal> findOlderAnimal(int age);
-    Set<String> findDuplicate();
-    void printDuplicate();
-    void addAll(List<AbstractAnimal> animals);
-    public void addAnimals(List<AbstractAnimal> animals);
+    Map<String, LocalDate> findLeapYearNames();
+    Map<AbstractAnimal, Integer> findOlderAnimal(int age);
+    Map<String, Integer> findDuplicate();
 }

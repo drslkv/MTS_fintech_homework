@@ -6,24 +6,48 @@ import ru.mtsbank.animals.Dog;
 import ru.mtsbank.animals.Shark;
 import ru.mtsbank.animals.Wolf;
 import ru.mtsbank.config.AnimalProperties;
+import ru.mtsbank.config.InjectRandomInt;
 import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import ru.mtsbank.descriptionAnimal.Animal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class CreateAnimalServiceImpl implements CreateAnimalService {
     private final AnimalProperties animalProperties;
-    private final Random random;
+
+    @InjectRandomInt(min = 1000, max = 10000)
+    int N = 1;
 
     public CreateAnimalServiceImpl(AnimalProperties animalProperties) {
         this.animalProperties = animalProperties;
-        this.random = new Random();
+    }
+
+    public String getRandomAnimalType() {
+        String[] animalTypes = {"Cat", "Dog", "Shark", "Wolf"};
+        return animalTypes[new Random().nextInt(animalTypes.length)];
+    }
+
+    public String getRandomName(String type) {
+        switch (type) {
+            case "Cat":
+                return animalProperties.getCatName();
+            case "Dog":
+                return animalProperties.getDogName();
+            case "Shark":
+                return animalProperties.getSharkName();
+            case "Wolf":
+                return animalProperties.getWolfName();
+            default:
+                throw new IllegalArgumentException("Unknown animal type: " + type);
+        }
+    }
+
+    public String getRandomCharacter() {
+        return animalProperties.getCharacter();
     }
 
     public LocalDate randBirthDate() {
@@ -37,81 +61,70 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         return LocalDate.ofEpochDay(randomEpochDay);
     }
 
-    public String getRandomAnimalType() {
-        String[] animalTypes = {"Cat", "Dog", "Shark", "Wolf"};
-        return animalTypes[new Random().nextInt(animalTypes.length)];
-    }
-
     public Animal getRandomAnimalFactory(String type) {
-        int randomIndexName = random.nextInt(names.length);
-        int randomIndexCharacter = random.nextInt(character.length);
+        String name = getRandomName(type);
+        String character = getRandomCharacter();
         LocalDate birthDate = randBirthDate();
 
         switch (type) {
             case "Cat":
-                return new Cat("Cat", names[randomIndexName],
-                        BigDecimal.valueOf(random.nextDouble() * 1000), character[randomIndexCharacter],
-                        birthDate);
+                return new Cat("Cat", name, BigDecimal.valueOf(random.nextDouble() * N),
+                        character, birthDate);
             case "Dog":
-                return new Dog("Dog", names[randomIndexName],
-                        BigDecimal.valueOf(random.nextDouble() * 1000), character[randomIndexCharacter],
-                        birthDate);
+                return new Dog("Dog", name, BigDecimal.valueOf(random.nextDouble() * N),
+                        character, birthDate);
             case "Shark":
-                return new Shark("Shark", names[randomIndexName],
-                        BigDecimal.valueOf(random.nextDouble() * 1000), character[randomIndexCharacter],
-                        birthDate);
+                return new Shark("Shark", name, BigDecimal.valueOf(random.nextDouble() * N),
+                        character, birthDate);
             case "Wolf":
-                return new Wolf("Wolf", names[randomIndexName],
-                        BigDecimal.valueOf(random.nextDouble() * 1000), character[randomIndexCharacter],
-                        birthDate);
+                return new Wolf("Wolf", name, BigDecimal.valueOf(random.nextDouble() * N),
+                        character, birthDate);
             default:
                 throw new IllegalArgumentException("Error animal type");
         }
     }
 
-    public AbstractAnimal[] createAnimals(int n) {
-        AbstractAnimal[] animals = new AbstractAnimal[n];
+    public Map<String, List<Animal>> createAnimals(int n) {
+        Map<String, List<Animal>> animalsMap = new HashMap<>();
 
         for (int i = 0; i < n; i++) {
             String type = getRandomAnimalType();
             Animal animalFactory = getRandomAnimalFactory(type);
-            String name = type.equals("Cat") ? animalProperties.getCatName() : animalProperties.getDogName();
-            AbstractAnimal animal = animalFactory.createAnimal("_" + i,
-                    name,
-                    BigDecimal.valueOf(random.nextDouble() * 1000),
-                    character[random.nextInt(character.length)],
+            Animal animal = animalFactory.createAnimal("_" + i,
+                    getRandomName(type),
+                    BigDecimal.valueOf(random.nextDouble() * N),
+                    getRandomCharacter(),
                     randBirthDate());
 
-            animals[i] = animal;
+            animalsMap.computeIfAbsent(type, k -> new ArrayList<>()).add(animal);
         }
 
-        return animals;
+        return animalsMap;
     }
 
-    public AbstractAnimal[] createAnimals() {
+    public Map<String, List<Animal>> createAnimals() {
+        Map<String, List<Animal>> animalsMap = new HashMap<>();
         int iterations = 0;
-        List<AbstractAnimal> animalsList = new ArrayList<>();
 
-        do {
+        while (uniqueAnimals.size() < 10 && iterations < 100) {
             String type = getRandomAnimalType();
             Animal animalFactory = getRandomAnimalFactory(type);
-            String name = type.equals("Cat") ? animalProperties.getCatName() : animalProperties.getDogName();
             AbstractAnimal animal = animalFactory.createAnimal("_" + uniqueAnimals.size(),
-                    name,
-                    BigDecimal.valueOf(random.nextDouble() * 1000),
-                    character[random.nextInt(character.length)],
+                    getRandomName(type),
+                    BigDecimal.valueOf(random.nextDouble() * N),
+                    getRandomCharacter(),
                     randBirthDate());
 
             if (uniqueAnimals.add(animal.getBreed())) {
-                animalsList.add(animal);
+                animalsMap.computeIfAbsent(type, k -> new ArrayList<>()).add(animal);
             } else {
                 System.out.println("Not added: " + animal.getBreed());
             }
 
             iterations++;
-        } while (uniqueAnimals.size() < 10 && iterations < 100);
+        }
 
-        return animalsList.toArray(new AbstractAnimal[0]);
+        return animalsMap;
     }
 
     public void printAnimalDetails(AbstractAnimal animal) {

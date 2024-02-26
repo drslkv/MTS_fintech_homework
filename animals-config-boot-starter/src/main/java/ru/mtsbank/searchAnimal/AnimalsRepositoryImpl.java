@@ -2,6 +2,7 @@ package ru.mtsbank.searchAnimal;
 
 import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import ru.mtsbank.createService.CreateAnimalService;
+import ru.mtsbank.descriptionAnimal.Animal;
 
 import javax.annotation.PostConstruct;
 import java.beans.ConstructorProperties;
@@ -14,97 +15,92 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     private final List<AbstractAnimal> animals;
     private final CreateAnimalService createAnimalService;
 
+    /**
+     * Создает экземпляр класса AnimalsRepositoryImpl.
+     *
+     * @param createAnimalService сервис создания животных
+     */
     @ConstructorProperties({"ru/mtsbank/animals"})
     public AnimalsRepositoryImpl(CreateAnimalService createAnimalService) {
         this.animals = new ArrayList<>();
         this.createAnimalService = createAnimalService;
     }
 
-    @Override
-    public void addAll(List<AbstractAnimal> newAnimals) {
-        animals.addAll(newAnimals);
-    }
-
+    /**
+     * Выполняет инициализацию после создания экземпляра класса.
+     */
     @PostConstruct
     public void postConstruct() {
-        AbstractAnimal[] createdAnimals = createAnimalService.createAnimals();
-        addAll(Arrays.asList(createdAnimals));
+        Map<String, List<Animal>> createdAnimals = createAnimalService.createAnimals();
 
         System.out.println("CREATE");
-        for (AbstractAnimal animal : createdAnimals) {
-            createAnimalService.printAnimalDetails(animal);
-        }
+        createdAnimals.forEach((type, animalList) -> {
+            animalList.forEach(animal -> {
+                createAnimalService.printAnimalDetails((AbstractAnimal) animal);
+                animals.add((AbstractAnimal) animal);
+            });
+        });
     }
 
     /**
      * Находит животных с именами, соответствующими году високосного дня их даты рождения.
-     * @return Массив животных с именами, соответствующими году високосного дня.
+     *
+     * @return Мапа животных с именами, соответствующими году високосного дня
      */
     @Override
-    public List<AbstractAnimal> findLeapYearNames() {
-        List<AbstractAnimal> leapYearNamesList = new ArrayList<>();
+    public Map<String, LocalDate> findLeapYearNames() {
+        Map<String, LocalDate> leapYearNamesMap = new HashMap<>();
 
         for (AbstractAnimal animal : animals) {
             if (animal.getBirthDate().isLeapYear()) {
-                leapYearNamesList.add(animal);
+                leapYearNamesMap.put(animal.getBreed() + " " + animal.getName(), animal.getBirthDate());
             }
         }
 
-        return leapYearNamesList;
+        return leapYearNamesMap;
     }
 
     /**
-     * Находит животных, которые старше заданного возраста.
+     * Находит животных с именами, соответствующими году високосного дня их даты рождения.
      *
-     * @param age     Возраст, с которым сравниваются животные.
-     * @return Массив животных, старше заданного возраста.
+     * @return Мапа животных с именами, соответствующими году високосного дня
      */
     @Override
-    public List<AbstractAnimal> findOlderAnimal(int age) {
-        List<AbstractAnimal> olderAnimalsList = new ArrayList<>();
+    public Map<AbstractAnimal, Integer> findOlderAnimal(int age) {
+        Map<AbstractAnimal, Integer> olderAnimalsMap = new HashMap<>();
         LocalDate currentDate = LocalDate.now();
 
         for (AbstractAnimal animal : animals) {
             int ageAnimal = Period.between(animal.getBirthDate(), currentDate).getYears();
             if (ageAnimal > age) {
-                olderAnimalsList.add(animal);
+                olderAnimalsMap.put(animal, ageAnimal);
             }
         }
 
-        return olderAnimalsList;
+        return olderAnimalsMap;
     }
 
     /**
-     * Находит дубликаты животных с одинаковым именем и характером.
+     * Находит животных с именами, соответствующими году високосного дня их даты рождения.
+     *
+     * @return Мапа животных с именами, соответствующими году високосного дня
      */
     @Override
-    public Set<String> findDuplicate() {
-        Set<String> uniqueAnimalsSet = new HashSet<>();
-        Set<String> duplicates = new HashSet<>();
+    public Map<String, Integer> findDuplicate() {
+        Map<String, Integer> duplicateCountMap = new HashMap<>();
+        Map<String, Integer> tempMap = new HashMap<>();
 
         for (AbstractAnimal animal : animals) {
             String key = animal.getName() + " " + animal.getCharacter();
+            tempMap.put(key, tempMap.getOrDefault(key, 0) + 1);
+        }
 
-            if (uniqueAnimalsSet.contains(key)) {
-                duplicates.add("Duplicate name and character found: " + animal.getName()
-                        + " " + animal.getCharacter());
-            } else {
-                uniqueAnimalsSet.add(key);
+        for (Map.Entry<String, Integer> entry : tempMap.entrySet()) {
+            if (entry.getValue() > 1) {
+                duplicateCountMap.put(entry.getKey(), entry.getValue());
             }
         }
 
-        return duplicates;
-    }
-
-    @Override
-    public void printDuplicate() {
-        Set<String> duplicates = findDuplicate();
-        for (String duplicate : duplicates) {
-            System.out.println(duplicate);
-        }
-    }
-
-    public void addAnimals(List<AbstractAnimal> animals) {
-        this.animals.addAll(animals);
+        return duplicateCountMap;
     }
 }

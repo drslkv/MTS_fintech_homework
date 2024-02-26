@@ -1,5 +1,6 @@
 package ru.mtsbank.createService;
 
+import ru.mtsbank.config.InjectRandomInt;
 import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import ru.mtsbank.descriptionAnimal.Animal;
 
@@ -10,34 +11,36 @@ import java.util.*;
 public interface CreateAnimalService {
     Set<String> uniqueAnimals = new HashSet<>();
     Random random = new Random();
-    String[] names = {"Buddy", "Max", "Charlie", "Bella", "Lucy", "Daisy", "Rocky", "Luna"};
-    String[] character = {"Aggressive", "Fierce", "Friendly", "Playful"};
+    @InjectRandomInt(min = 100, max = 1000)
+    int N = 1;
 
-    default AbstractAnimal[] createAnimals() {
+
+    default Map<String, List<Animal>> createAnimals() {
         int iterations = 0;
-        List<AbstractAnimal> animalsList = new ArrayList<>();
+        Map<String, List<Animal>> animalsMap = new HashMap<>();
 
-        while (uniqueAnimals.size() < 10) {
+        while (uniqueAnimals.size() < 10 && iterations < 100) {
             String type = getRandomAnimalType();
             Animal animalFactory = getRandomAnimalFactory(type);
             AbstractAnimal animal = animalFactory.createAnimal("_" + uniqueAnimals.size(),
-                    names[random.nextInt(names.length)],
-                    BigDecimal.valueOf(random.nextDouble() * 1000),
-                    character[random.nextInt(character.length)],
+                    getRandomName(type),
+                    BigDecimal.valueOf(random.nextInt() * N),
+                    getRandomCharacter(),
                     randBirthDate());
 
-            if (uniqueAnimals.add(animal.getBreed())) {
-                animalsList.add(animal);
-            } else {
-                System.out.println("Not added: " + animal.getBreed());
-            }
-
+            animalsMap.computeIfAbsent(type, k -> new ArrayList<>()).add(animal);
             iterations++;
         }
 
-        return animalsList.toArray(new AbstractAnimal[0]);
+        return animalsMap;
     }
-    AbstractAnimal[] createAnimals(int n);
+
+    Map<String, List<Animal>> createAnimals(int n);
+
+    String getRandomCharacter();
+
+    String getRandomName(String type);
+
     String getRandomAnimalType();
     Animal getRandomAnimalFactory(String type);
     LocalDate randBirthDate();

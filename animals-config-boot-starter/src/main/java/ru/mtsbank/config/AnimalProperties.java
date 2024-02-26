@@ -2,9 +2,12 @@ package ru.mtsbank.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
+@Service
 @ConfigurationProperties(prefix = "animals")
 public class AnimalProperties {
     @Value("${animal.dog.names}")
@@ -15,6 +18,9 @@ public class AnimalProperties {
     private String[] sharkName;
     @Value("${animal.wolf.names}")
     private String[] wolfName;
+
+    @Value("${character}")
+    private String[] character;
 
     private final Random random = new Random();
 
@@ -34,19 +40,7 @@ public class AnimalProperties {
         return wolfName[random.nextInt(wolfName.length)];
     }
 
-    public void setDogName(String[] dogName) {
-        this.dogName = dogName;
-    }
-
-    public void setCatName(String[] catName) {
-        this.catName = catName;
-    }
-
-    public void setSharkName(String[] sharkName) {
-        this.sharkName = sharkName;
-    }
-
-    public void setWolfName(String[] wolfName) {
-        this.wolfName = wolfName;
+    public String getCharacter() {
+        return character[random.nextInt(character.length)];
     }
 }
