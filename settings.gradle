@@ -1,0 +1,5 @@
+rootProject.name = 'MTS_fintech_homework'
+
+include 'application'
+include 'animals-config-boot-starter'
+
