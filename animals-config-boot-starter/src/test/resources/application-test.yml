@@ -1,0 +1,12 @@
+animal:
+  dog:
+    names: Bailey, Cooper, Daisy, Aba
+  cat:
+    names: Whiskers, Mittens, Luna
+  shark:
+    names: Bruce, Nemo, Dory
+  wolf:
+    names: Luna, Shadow, Rocky
+
+character: Aggressive, Fierce, Friendly, Playful
+
