@@ -2,9 +2,8 @@ package ru.mtsbank.scheduler;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.mtsbank.createService.CreateAnimalService;
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import ru.mtsbank.searchAnimal.AnimalsRepository;
+import ru.mtsbank.description.AbstractAnimal;
+import ru.mtsbank.search.AnimalsRepository;
 
 import java.time.LocalDate;
 import java.util.List;

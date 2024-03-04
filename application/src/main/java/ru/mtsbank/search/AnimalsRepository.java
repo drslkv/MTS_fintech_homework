@@ -1,6 +1,6 @@
-package ru.mtsbank.searchAnimal;
+package ru.mtsbank.search;
 
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
+import ru.mtsbank.description.AbstractAnimal;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -3,7 +3,7 @@ package starterTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.mtsbank.config.AnimalProperties;
-import ru.mtsbank.createService.CreateAnimalServiceImpl;
+import ru.mtsbank.create.CreateAnimalServiceImpl;
 
 @Configuration
 public class TestConfig {

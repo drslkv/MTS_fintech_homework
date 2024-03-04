@@ -1,4 +1,4 @@
-package ru.mtsbank.createService;
+package ru.mtsbank.create;
 
 import org.springframework.stereotype.Service;
 import ru.mtsbank.animals.Cat;
@@ -7,8 +7,8 @@ import ru.mtsbank.animals.Shark;
 import ru.mtsbank.animals.Wolf;
 import ru.mtsbank.config.AnimalProperties;
 import ru.mtsbank.config.InjectRandomInt;
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import ru.mtsbank.descriptionAnimal.Animal;
+import ru.mtsbank.description.AbstractAnimal;
+import ru.mtsbank.description.Animal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
     private final AnimalProperties animalProperties;
 
     @InjectRandomInt(min = 1000, max = 10000)
-    int N = 1;
+    private final int N = 1;
 
     public CreateAnimalServiceImpl(AnimalProperties animalProperties) {
         this.animalProperties = animalProperties;

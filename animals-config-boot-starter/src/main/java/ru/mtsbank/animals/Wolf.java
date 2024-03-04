@@ -1,7 +1,7 @@
 package ru.mtsbank.animals;
 
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import ru.mtsbank.descriptionAnimal.Predator;
+import ru.mtsbank.description.AbstractAnimal;
+import ru.mtsbank.description.Predator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

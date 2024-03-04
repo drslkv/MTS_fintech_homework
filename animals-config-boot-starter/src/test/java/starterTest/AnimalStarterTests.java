@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
-import ru.mtsbank.createService.CreateAnimalService;
+import ru.mtsbank.create.CreateAnimalService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

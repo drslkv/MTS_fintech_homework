@@ -1,13 +1,13 @@
-package searchAnimalTest;
+package search.test;
 
 import org.junit.jupiter.api.Test;
 import ru.mtsbank.animals.Cat;
 import ru.mtsbank.animals.Dog;
 import ru.mtsbank.animals.Shark;
-import ru.mtsbank.createService.CreateAnimalService;
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import ru.mtsbank.searchAnimal.AnimalsRepository;
-import ru.mtsbank.searchAnimal.AnimalsRepositoryImpl;
+import ru.mtsbank.create.CreateAnimalService;
+import ru.mtsbank.description.AbstractAnimal;
+import ru.mtsbank.search.AnimalsRepository;
+import ru.mtsbank.search.AnimalsRepositoryImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

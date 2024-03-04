@@ -1,8 +1,8 @@
-package ru.mtsbank.createService;
+package ru.mtsbank.create;
 
 import ru.mtsbank.config.InjectRandomInt;
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import ru.mtsbank.descriptionAnimal.Animal;
+import ru.mtsbank.description.AbstractAnimal;
+import ru.mtsbank.description.Animal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

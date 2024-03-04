@@ -1,4 +1,4 @@
-package ru.mtsbank.descriptionAnimal;
+package ru.mtsbank.description;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -33,6 +33,6 @@ public abstract class AbstractAnimal implements Animal{
 
     @Override
     public int hashCode() {
-        return Objects.hash(breed, name, birthDate);
+        return Objects.hash(breed, name, cost, character, birthDate);
     }
 }

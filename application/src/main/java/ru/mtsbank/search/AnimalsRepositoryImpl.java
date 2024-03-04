@@ -1,9 +1,9 @@
-package ru.mtsbank.searchAnimal;
+package ru.mtsbank.search;
 
 import org.springframework.stereotype.Service;
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import ru.mtsbank.createService.CreateAnimalService;
-import ru.mtsbank.descriptionAnimal.Animal;
+import ru.mtsbank.description.AbstractAnimal;
+import ru.mtsbank.create.CreateAnimalService;
+import ru.mtsbank.description.Animal;
 
 import javax.annotation.PostConstruct;
 import java.beans.ConstructorProperties;

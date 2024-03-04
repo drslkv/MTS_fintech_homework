@@ -1,12 +1,10 @@
 package ru.mtsbank.animals;
 
-import ru.mtsbank.descriptionAnimal.AbstractAnimal;
-import ru.mtsbank.descriptionAnimal.Animal;
-import ru.mtsbank.descriptionAnimal.Pet;
+import ru.mtsbank.description.AbstractAnimal;
+import ru.mtsbank.description.Pet;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class Cat extends Pet {
     public Cat(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
