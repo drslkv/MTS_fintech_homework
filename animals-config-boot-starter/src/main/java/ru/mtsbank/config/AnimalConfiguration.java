@@ -4,8 +4,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import ru.mtsbank.searchAnimal.AnimalsRepository;
-import ru.mtsbank.searchAnimal.AnimalsRepositoryImpl;
 import ru.mtsbank.createService.CreateAnimalServiceImpl;
 
 @Configuration
@@ -16,11 +14,5 @@ public class AnimalConfiguration {
     public CreateAnimalServiceImpl createAnimalService(AnimalProperties animalProperties) {
         return new CreateAnimalServiceImpl(animalProperties);
     }
-
-    @Bean
-    public AnimalsRepository animalsRepository(CreateAnimalServiceImpl createAnimalService) {
-        return new AnimalsRepositoryImpl(createAnimalService);
-    }
-
 }
 

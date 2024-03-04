@@ -3,6 +3,7 @@ package ru.mtsbank.descriptionAnimal;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public abstract class AbstractAnimal implements Animal{
     protected String breed;
@@ -28,5 +29,10 @@ public abstract class AbstractAnimal implements Animal{
         Animal animal = (Animal) obj;
         return breed.equals(animal.getBreed()) && name.equals(animal.getName())
                 && birthDate.equals(animal.getBirthDate());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(breed, name, birthDate);
     }
 }

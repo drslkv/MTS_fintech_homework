@@ -15,8 +15,11 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation project(path: ':animals-config-boot-starter')
 
-    compileOnly 'org.projectlombok:lombok:1.18.22'
-    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.mockito:mockito-core'
+    testImplementation 'org.assertj:assertj-core'
+
+    test.useJUnitPlatform()
 }
 
 tasks.register('prepareKotlinBuildScriptModel') {

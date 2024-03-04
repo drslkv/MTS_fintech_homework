@@ -1,16 +1,19 @@
 package ru.mtsbank.searchAnimal;
 
+import org.springframework.stereotype.Service;
 import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import ru.mtsbank.createService.CreateAnimalService;
 import ru.mtsbank.descriptionAnimal.Animal;
 
 import javax.annotation.PostConstruct;
 import java.beans.ConstructorProperties;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+import java.util.stream.Collectors;
 
-
+@Service
 public class AnimalsRepositoryImpl implements AnimalsRepository {
     private final List<AbstractAnimal> animals;
     private final CreateAnimalService createAnimalService;
@@ -49,15 +52,10 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @Override
     public Map<String, LocalDate> findLeapYearNames() {
-        Map<String, LocalDate> leapYearNamesMap = new HashMap<>();
-
-        for (AbstractAnimal animal : animals) {
-            if (animal.getBirthDate().isLeapYear()) {
-                leapYearNamesMap.put(animal.getBreed() + " " + animal.getName(), animal.getBirthDate());
-            }
-        }
-
-        return leapYearNamesMap;
+        return animals.stream()
+                .filter(animal -> animal.getBirthDate().isLeapYear())
+                .collect(Collectors.toMap(animal -> animal.getBreed() + " " + animal.getName(),
+                        AbstractAnimal::getBirthDate));
     }
 
     /**
@@ -67,17 +65,11 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @Override
     public Map<AbstractAnimal, Integer> findOlderAnimal(int age) {
-        Map<AbstractAnimal, Integer> olderAnimalsMap = new HashMap<>();
         LocalDate currentDate = LocalDate.now();
-
-        for (AbstractAnimal animal : animals) {
-            int ageAnimal = Period.between(animal.getBirthDate(), currentDate).getYears();
-            if (ageAnimal > age) {
-                olderAnimalsMap.put(animal, ageAnimal);
-            }
-        }
-
-        return olderAnimalsMap;
+        return animals.stream()
+                .filter(animal -> Period.between(animal.getBirthDate(), currentDate).getYears() > age)
+                .collect(Collectors.toMap(animal -> animal,
+                        animal -> Period.between(animal.getBirthDate(), currentDate).getYears()));
     }
 
     /**
@@ -86,21 +78,43 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      * @return Мапа животных с именами, соответствующими году високосного дня
      */
     @Override
-    public Map<String, Integer> findDuplicate() {
-        Map<String, Integer> duplicateCountMap = new HashMap<>();
-        Map<String, Integer> tempMap = new HashMap<>();
+    public Map<String, List<AbstractAnimal>> findDuplicate() {
+        return animals.stream()
+                .collect(Collectors.groupingBy(animal -> animal.getName() + " " + animal.getCharacter()))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue().size() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
 
-        for (AbstractAnimal animal : animals) {
-            String key = animal.getName() + " " + animal.getCharacter();
-            tempMap.put(key, tempMap.getOrDefault(key, 0) + 1);
-        }
+    @Override
+    public double findAverageAge() {
+        return animals.stream()
+                .mapToDouble(animal -> Period.between(animal.getBirthDate(), LocalDate.now()).getYears())
+                .average()
+                .orElse(0);
+    }
 
-        for (Map.Entry<String, Integer> entry : tempMap.entrySet()) {
-            if (entry.getValue() > 1) {
-                duplicateCountMap.put(entry.getKey(), entry.getValue());
-            }
-        }
+    @Override
+    public List<AbstractAnimal> findOldAndExpensive() {
+        double averageCost = animals.stream()
+                .mapToDouble(animal -> animal.getCost().doubleValue())
+                .average()
+                .orElse(0);
 
-        return duplicateCountMap;
+        return animals.stream()
+                .filter(animal -> Period.between(animal.getBirthDate(), LocalDate.now()).getYears() > 5 &&
+                        animal.getCost().compareTo(BigDecimal.valueOf(averageCost)) > 0)
+                .sorted(Comparator.comparing(AbstractAnimal::getBirthDate))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> findMinCostAnimals() {
+        return animals.stream()
+                .sorted(Comparator.comparing(AbstractAnimal::getCost))
+                .limit(3)
+                .map(AbstractAnimal::getName)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
     }
 }

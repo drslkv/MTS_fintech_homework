@@ -4,22 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-8">
-      <change afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/InjectRandomInt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/test/TestConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="89806732-d860-4504-8cef-44567c374b94" name="Changes" comment="дз-9">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/src/main/java/ru/mtsbank/config/AnimalsRepositoryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/src/test/java/searchAnimalTest/AnimalsRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalPostBeanProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/InjectRandomIntBeanProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/animals/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/config/AnimalProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/createService/CreateAnimalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/createService/CreateAnimalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/createService/CreateAnimalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/createService/CreateAnimalServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/AnimalStarterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/test/AnimalStarterTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/TestConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/test/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/test/resources/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/descriptionAnimal/AbstractAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/descriptionAnimal/AbstractAnimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/ru/mtsbank/searchAnimal/AnimalsRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/test/AnimalStarterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/starterTest/AnimalStarterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/test/TestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/animals-config-boot-starter/src/test/java/starterTest/TestConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/application/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/src/main/java/ru/mtsbank/scheduler/ScheduledTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/application/src/main/java/ru/mtsbank/scheduler/ScheduledTasks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/src/test/java/searchAnimalTest/SearchAnimalServiceImplTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature/HW-4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -119,8 +120,20 @@
     "Gradle.AnimalStarterTests.testFindLeapYearNames.executor": "Run",
     "Gradle.AnimalStarterTests.testFindOlderAnimal.executor": "Run",
     "Gradle.AnimalStarterTests.testGetRandomName.executor": "Debug",
+    "Gradle.AnimalsRepositoryTest.executor": "Run",
+    "Gradle.AnimalsRepositoryTest.testFindDuplicate.executor": "Run",
+    "Gradle.AnimalsRepositoryTest.testFindDuplicates.executor": "Run",
+    "Gradle.AnimalsRepositoryTest.testFindLeapYearNames (1).executor": "Run",
+    "Gradle.AnimalsRepositoryTest.testFindLeapYearNames.executor": "Run",
+    "Gradle.AnimalsRepositoryTest.testFindOlderAnimal.executor": "Run",
     "Gradle.Build MTS_fintech_homework.executor": "Run",
     "Gradle.Build application.executor": "Run",
+    "Gradle.SchedulerTest (1).executor": "Run",
+    "Gradle.SchedulerTest (2).executor": "Run",
+    "Gradle.SchedulerTest (3).executor": "Run",
+    "Gradle.SchedulerTest.executor": "Run",
+    "Gradle.SchedulerTest.testPrintAnimals (1).executor": "Run",
+    "Gradle.SchedulerTest.testPrintAnimals.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -133,7 +146,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.App (1).executor": "Run",
     "Spring Boot.App.executor": "Run",
-    "git-widget-placeholder": "feature/HW-4",
+    "git-widget-placeholder": "d7ae539f",
     "jdk.selected.JAVA_MODULE": "corretto-11",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/rosly/Desktop/MTS_fintech_homework",
@@ -162,8 +175,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AnimalStarterTests (1)">
-    <configuration name="AnimalStarterTests (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Spring Boot.App (1)">
+    <configuration name="AnimalsRepositoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -174,9 +187,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":animals-config-boot-starter:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;test.AnimalStarterTests&quot;" />
+            <option value="&quot;searchAnimalTest.AnimalsRepositoryTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -187,7 +200,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AnimalStarterTests.testFindDuplicate" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnimalsRepositoryTest.testFindDuplicate" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -198,9 +211,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":animals-config-boot-starter:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;test.AnimalStarterTests.testFindDuplicate&quot;" />
+            <option value="&quot;searchAnimalTest.AnimalsRepositoryTest.testFindDuplicate&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -211,7 +224,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AnimalStarterTests.testFindLeapYearNames" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnimalsRepositoryTest.testFindDuplicates" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -222,9 +235,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":animals-config-boot-starter:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;test.AnimalStarterTests.testFindLeapYearNames&quot;" />
+            <option value="&quot;searchAnimalTest.AnimalsRepositoryTest.testFindDuplicates&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -235,7 +248,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AnimalStarterTests.testFindOlderAnimal" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnimalsRepositoryTest.testFindLeapYearNames (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -246,9 +259,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":animals-config-boot-starter:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;test.AnimalStarterTests.testFindOlderAnimal&quot;" />
+            <option value="&quot;searchAnimalTest.AnimalsRepositoryTest.testFindLeapYearNames&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -259,7 +272,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AnimalStarterTests.testGetRandomName" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AnimalsRepositoryTest.testFindOlderAnimal" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -270,9 +283,9 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":animals-config-boot-starter:test" />
+            <option value=":application:test" />
             <option value="--tests" />
-            <option value="&quot;test.AnimalStarterTests.testGetRandomName&quot;" />
+            <option value="&quot;searchAnimalTest.AnimalsRepositoryTest.testFindOlderAnimal&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -299,11 +312,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.AnimalStarterTests (1)" />
-        <item itemvalue="Gradle.AnimalStarterTests.testFindDuplicate" />
-        <item itemvalue="Gradle.AnimalStarterTests.testFindOlderAnimal" />
-        <item itemvalue="Gradle.AnimalStarterTests.testFindLeapYearNames" />
-        <item itemvalue="Gradle.AnimalStarterTests.testGetRandomName" />
+        <item itemvalue="Gradle.AnimalsRepositoryTest" />
+        <item itemvalue="Gradle.AnimalsRepositoryTest.testFindDuplicate" />
+        <item itemvalue="Gradle.AnimalsRepositoryTest.testFindDuplicates" />
+        <item itemvalue="Gradle.AnimalsRepositoryTest.testFindOlderAnimal" />
+        <item itemvalue="Gradle.AnimalsRepositoryTest.testFindLeapYearNames (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -323,7 +336,9 @@
       <option name="presentableId" value="Default" />
       <updated>1706462898982</updated>
       <workItem from="1708009771801" duration="9897000" />
-      <workItem from="1708596845012" duration="25667000" />
+      <workItem from="1708596845012" duration="34965000" />
+      <workItem from="1709153916717" duration="4571000" />
+      <workItem from="1709472274690" duration="15848000" />
     </task>
     <task id="LOCAL-00001" summary="дз-4">
       <option name="closed" value="true" />
@@ -421,7 +436,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708437647820</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="дз-9">
+      <option name="closed" value="true" />
+      <created>1708966939185</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708966939185</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,7 +461,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="github/feature/HW-4" />
+                        <option value="github/feature/HW-9" />
                       </list>
                     </value>
                   </entry>
@@ -458,7 +481,8 @@
     <MESSAGE value="дз-6 (правки)" />
     <MESSAGE value="дз-7 (версия, которая запускается)" />
     <MESSAGE value="дз-8" />
-    <option name="LAST_COMMIT_MESSAGE" value="дз-8" />
+    <MESSAGE value="дз-9" />
+    <option name="LAST_COMMIT_MESSAGE" value="дз-9" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MTS_fintech_homework$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1707987190369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

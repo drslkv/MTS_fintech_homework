@@ -1,8 +1,8 @@
 package ru.mtsbank.scheduler;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import ru.mtsbank.createService.CreateAnimalService;
 import ru.mtsbank.descriptionAnimal.AbstractAnimal;
 import ru.mtsbank.searchAnimal.AnimalsRepository;
 
@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
 @Component
 public class ScheduledTasks {
     private final AnimalsRepository animalsRepository;
@@ -21,8 +20,12 @@ public class ScheduledTasks {
     @Scheduled(fixedRate = 60000)
     public void printAnimals() {
         Map<String, LocalDate> leapYearNames = animalsRepository.findLeapYearNames();
-        Map<AbstractAnimal, Integer> olderAnimals = animalsRepository.findOlderAnimal(5);
-        Map<String, Integer> duplicateAnimals = animalsRepository.findDuplicate();
+        Map<AbstractAnimal, Integer> olderAnimals = animalsRepository.findOlderAnimal(8);
+        Map<String, List<AbstractAnimal>> duplicateAnimals = animalsRepository.findDuplicate();
+
+        double averageAge = animalsRepository.findAverageAge();
+        List<AbstractAnimal> oldAndExpensiveAnimals = animalsRepository.findOldAndExpensive();
+        List<String> minCostAnimals = animalsRepository.findMinCostAnimals();
 
         System.out.println("\nCALL CALL CALL CALL CALL");
 
@@ -34,6 +37,15 @@ public class ScheduledTasks {
 
         System.out.println("\nDuplicate animals: ");
         duplicateAnimals.forEach((type, count) -> System.out.println(type + ": " + count));
+
+
+        System.out.println("\nAverage age of all animals: " + averageAge);
+
+        System.out.println("\nOld and expensive animals: ");
+        oldAndExpensiveAnimals.forEach(System.out::println);
+
+        System.out.println("\nMinimum cost animals: ");
+        minCostAnimals.forEach(System.out::println);
     }
 }
 
