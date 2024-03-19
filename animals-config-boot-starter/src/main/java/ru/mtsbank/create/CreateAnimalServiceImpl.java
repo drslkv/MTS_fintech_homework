@@ -9,6 +9,7 @@ import ru.mtsbank.config.AnimalProperties;
 import ru.mtsbank.config.InjectRandomInt;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
+import ru.mtsbank.exception.InvalidAnimalTypeException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -62,6 +63,9 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
     }
 
     public Animal getRandomAnimalFactory(String type) {
+        if (isValidAnimalType(type)) {
+            throw new InvalidAnimalTypeException("Invalid animal type: " + type);
+        }
         String name = getRandomName(type);
         String character = getRandomCharacter();
         LocalDate birthDate = randBirthDate();
@@ -84,11 +88,21 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         }
     }
 
+    private boolean isValidAnimalType(String type) {
+        return !type.equals("Cat") && !type.equals("Dog") && !type.equals("Shark") && !type.equals("Wolf");
+    }
+
     public Map<String, List<Animal>> createAnimals(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("Number of animals should be positive");
+        }
         Map<String, List<Animal>> animalsMap = new HashMap<>();
 
         for (int i = 0; i < n; i++) {
             String type = getRandomAnimalType();
+            if (isValidAnimalType(type)) {
+                throw new InvalidAnimalTypeException("Invalid animal type: " + type);
+            }
             Animal animalFactory = getRandomAnimalFactory(type);
             Animal animal = animalFactory.createAnimal("_" + i,
                     getRandomName(type),
@@ -128,6 +142,9 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
     }
 
     public void printAnimalDetails(AbstractAnimal animal) {
+        if (animal == null) {
+            throw new IllegalArgumentException("Animal cannot be null");
+        }
         System.out.println(animal.getBreed() + " " + animal.getName() + " " +
                 animal.getCharacter() + " " + animal.getCost() + " " + animal.getBirthDate());
     }

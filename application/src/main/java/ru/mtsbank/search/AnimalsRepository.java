@@ -2,6 +2,7 @@ package ru.mtsbank.search;
 
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
+import ru.mtsbank.exaption.InsufficientAnimalsException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,6 +15,6 @@ public interface AnimalsRepository {
 
     double findAverageAge();
     List<AbstractAnimal> findOldAndExpensive();
-    List<String> findMinCostAnimals();
+    List<String> findMinCostAnimals() throws InsufficientAnimalsException;
 
 }
