@@ -10,6 +10,7 @@ import ru.mtsbank.animals.Shark;
 import ru.mtsbank.create.CreateAnimalService;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
+import ru.mtsbank.exaption.InsufficientAnimalsException;
 import ru.mtsbank.search.AnimalsRepository;
 import ru.mtsbank.search.AnimalsRepositoryImpl;
 
@@ -159,7 +160,7 @@ public class AnimalsRepositoryTest {
 
     @DisplayName("Test testFindMinCostAnimals()")
     @Test
-    public void testFindMinCostAnimals() {
+    public void testFindMinCostAnimals() throws InsufficientAnimalsException {
         Animal animal1 = new Cat("Cat", "Barsik", BigDecimal.valueOf(50),
                 "Friendly", LocalDate.of(2010, 1, 1));
         Animal animal2 = new Dog("Dog", "Rex", BigDecimal.valueOf(30),
