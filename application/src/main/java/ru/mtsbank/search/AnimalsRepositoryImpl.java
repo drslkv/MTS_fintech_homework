@@ -78,12 +78,15 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      * @return Мапа животных с именами, соответствующими году високосного дня
      */
     @Override
-    public Map<String, List<AbstractAnimal>> findDuplicate() {
+    public Map<String, List<Animal>> findDuplicate() {
         return animals.stream()
                 .collect(Collectors.groupingBy(animal -> animal.getName() + " " + animal.getCharacter()))
                 .entrySet().stream()
                 .filter(entry -> entry.getValue().size() > 1)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> entry.getValue().stream().map(animal -> (Animal) animal).collect(Collectors.toList())
+                ));
     }
 
     @Override
