@@ -172,8 +172,8 @@ public class AnimalsRepositoryTest {
                 "Friendly", LocalDate.of(2015, 1, 1));
         Animal animal3 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
                 "Aggressive", LocalDate.of(2016, 1, 1));
-        Animal animal4 = new Shark("Shark", "Jawss", BigDecimal.valueOf(20),
-                "Aggressive", LocalDate.of(2017, 1, 1));
+        Animal animal4 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
+                "Aggressive", LocalDate.of(2016, 1, 1));
 
         when(createAnimalService.createAnimals()).thenReturn(Map.of(
                 "Cat", List.of(animal1),
