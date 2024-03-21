@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.create.CreateAnimalService;
 import ru.mtsbank.description.Animal;
-import ru.mtsbank.exaption.InsufficientAnimalsException;
-import ru.mtsbank.exaption.InvalidAgeException;
+import ru.mtsbank.exception.InsufficientAnimalsException;
+import ru.mtsbank.exception.InvalidAnimalException;
 
 import javax.annotation.PostConstruct;
 import java.beans.ConstructorProperties;
@@ -68,7 +68,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     @Override
     public Map<AbstractAnimal, Integer> findOlderAnimal(int age) {
         if (age < 0) {
-            throw new InvalidAgeException("Age cannot be negative");
+            throw new InvalidAnimalException("Age cannot be negative");
         }
         LocalDate currentDate = LocalDate.now();
         return animals.stream()
@@ -132,16 +132,21 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      * @return список имен трех животных с минимальной стоимостью
      */
     @Override
-    public List<String> findMinCostAnimals() throws InsufficientAnimalsException {
+    public List<String> findMinCostAnimals() {
         int requiredSize = 3;
-        if (animals.size() < requiredSize) {
-            throw new InsufficientAnimalsException("Insufficient number of animals in the collection");
+        try {
+            if (animals.size() < requiredSize) {
+                throw new InsufficientAnimalsException("Insufficient number of animals in the collection");
+            }
+            return animals.stream()
+                    .sorted(Comparator.comparing(AbstractAnimal::getCost))
+                    .limit(requiredSize)
+                    .map(AbstractAnimal::getName)
+                    .sorted(Comparator.reverseOrder())
+                    .collect(Collectors.toList());
+        } catch (InsufficientAnimalsException e) {
+            return Collections.emptyList();
         }
-        return animals.stream()
-                .sorted(Comparator.comparing(AbstractAnimal::getCost))
-                .limit(3)
-                .map(AbstractAnimal::getName)
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
     }
+
 }

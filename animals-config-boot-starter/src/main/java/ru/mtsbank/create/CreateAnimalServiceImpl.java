@@ -9,7 +9,7 @@ import ru.mtsbank.config.AnimalProperties;
 import ru.mtsbank.config.InjectRandomInt;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
-import ru.mtsbank.exception.InvalidAnimalTypeException;
+import ru.mtsbank.exception.InvalidAnimalException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -43,7 +43,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             case "Wolf":
                 return animalProperties.getWolfName();
             default:
-                throw new IllegalArgumentException("Unknown animal type: " + type);
+                throw new InvalidAnimalException("Error animal type: " + type);
         }
     }
 
@@ -64,7 +64,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     public Animal getRandomAnimalFactory(String type) {
         if (isValidAnimalType(type)) {
-            throw new InvalidAnimalTypeException("Invalid animal type: " + type);
+            throw new InvalidAnimalException("Invalid animal type: " + type);
         }
         String name = getRandomName(type);
         String character = getRandomCharacter();
@@ -84,7 +84,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
                 return new Wolf("Wolf", name, BigDecimal.valueOf(random.nextDouble() * N),
                         character, birthDate);
             default:
-                throw new IllegalArgumentException("Error animal type");
+                throw new InvalidAnimalException("Error animal type: " + type);
         }
     }
 
@@ -101,7 +101,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         for (int i = 0; i < n; i++) {
             String type = getRandomAnimalType();
             if (isValidAnimalType(type)) {
-                throw new InvalidAnimalTypeException("Invalid animal type: " + type);
+                throw new InvalidAnimalException("Invalid animal type: " + type);
             }
             Animal animalFactory = getRandomAnimalFactory(type);
             Animal animal = animalFactory.createAnimal("_" + i,
@@ -143,7 +143,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     public void printAnimalDetails(AbstractAnimal animal) {
         if (animal == null) {
-            throw new IllegalArgumentException("Animal cannot be null");
+            throw new InvalidAnimalException("Animal cannot be null");
         }
         System.out.println(animal.getBreed() + " " + animal.getName() + " " +
                 animal.getCharacter() + " " + animal.getCost() + " " + animal.getBirthDate());

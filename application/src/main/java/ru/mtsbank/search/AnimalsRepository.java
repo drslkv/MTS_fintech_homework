@@ -2,7 +2,8 @@ package ru.mtsbank.search;
 
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
-import ru.mtsbank.exaption.InsufficientAnimalsException;
+import ru.mtsbank.exception.InsufficientAnimalsException;
+
 
 import java.time.LocalDate;
 import java.util.List;

@@ -10,7 +10,6 @@ import ru.mtsbank.animals.Shark;
 import ru.mtsbank.create.CreateAnimalService;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
-import ru.mtsbank.exaption.InsufficientAnimalsException;
 import ru.mtsbank.search.AnimalsRepository;
 import ru.mtsbank.search.AnimalsRepositoryImpl;
 
@@ -77,6 +76,8 @@ public class AnimalsRepositoryTest {
 
         int age = 5;
         Map<AbstractAnimal, Integer> olderAnimals = animalsRepository.findOlderAnimal(age);
+
+        assertDoesNotThrow(() -> animalsRepository.findOlderAnimal(0));
 
         for (Map.Entry<AbstractAnimal, Integer> entry : olderAnimals.entrySet()) {
             Integer animalAge = entry.getValue();
@@ -160,20 +161,22 @@ public class AnimalsRepositoryTest {
 
     @DisplayName("Test testFindMinCostAnimals()")
     @Test
-    public void testFindMinCostAnimals() throws InsufficientAnimalsException {
+    public void testFindMinCostAnimals() {
         Animal animal1 = new Cat("Cat", "Barsik", BigDecimal.valueOf(50),
                 "Friendly", LocalDate.of(2010, 1, 1));
         Animal animal2 = new Dog("Dog", "Rex", BigDecimal.valueOf(30),
                 "Friendly", LocalDate.of(2015, 1, 1));
         Animal animal3 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
                 "Aggressive", LocalDate.of(2016, 1, 1));
+        Animal animal4 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
+                "Aggressive", LocalDate.of(2016, 1, 1));
 
         when(createAnimalService.createAnimals()).thenReturn(Map.of(
                 "Cat", List.of(animal1, animal2),
-                "Shark", List.of(animal3)
+                "Shark", List.of(animal3, animal4)
         ));
 
-        List<String> result = animalsRepository.findMinCostAnimals();
+        List<String> result = assertDoesNotThrow(() -> animalsRepository.findMinCostAnimals());
 
         String[] expectedNames = {"Barsik", "Rex", "Jaws"};
 

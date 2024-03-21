@@ -47,8 +47,8 @@ public class ScheduledTasks {
             System.out.println("\nMinimum cost animals: ");
             minCostAnimals.forEach(System.out::println);
         } catch (Exception e) {
-            System.out.println("Error printAnimals(): " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("Error printAnimals(): " + e.getMessage());
+            e.printStackTrace(System.err);
         }
     }
 }
