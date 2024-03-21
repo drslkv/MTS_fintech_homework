@@ -132,21 +132,17 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      * @return список имен трех животных с минимальной стоимостью
      */
     @Override
-    public List<String> findMinCostAnimals() {
+    public List<String> findMinCostAnimals() throws InsufficientAnimalsException {
         int requiredSize = 3;
-        try {
-            if (animals.size() < requiredSize) {
-                throw new InsufficientAnimalsException("Insufficient number of animals in the collection");
-            }
-            return animals.stream()
-                    .sorted(Comparator.comparing(AbstractAnimal::getCost))
-                    .limit(requiredSize)
-                    .map(AbstractAnimal::getName)
-                    .sorted(Comparator.reverseOrder())
-                    .collect(Collectors.toList());
-        } catch (InsufficientAnimalsException e) {
-            return Collections.emptyList();
+        if (animals.size() < requiredSize) {
+            throw new InsufficientAnimalsException("Insufficient number of animals in the collection");
         }
+        return animals.stream()
+                .sorted(Comparator.comparing(AbstractAnimal::getCost))
+                .limit(requiredSize)
+                .map(AbstractAnimal::getName)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
     }
 
 }

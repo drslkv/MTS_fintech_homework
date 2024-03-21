@@ -10,6 +10,8 @@ import ru.mtsbank.animals.Shark;
 import ru.mtsbank.create.CreateAnimalService;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
+import ru.mtsbank.exception.InsufficientAnimalsException;
+import ru.mtsbank.exception.InvalidAnimalException;
 import ru.mtsbank.search.AnimalsRepository;
 import ru.mtsbank.search.AnimalsRepositoryImpl;
 
@@ -77,13 +79,15 @@ public class AnimalsRepositoryTest {
         int age = 5;
         Map<AbstractAnimal, Integer> olderAnimals = animalsRepository.findOlderAnimal(age);
 
-        assertDoesNotThrow(() -> animalsRepository.findOlderAnimal(0));
-
         for (Map.Entry<AbstractAnimal, Integer> entry : olderAnimals.entrySet()) {
             Integer animalAge = entry.getValue();
 
             assertTrue(animalAge > age);
         }
+
+        assertDoesNotThrow(() -> animalsRepository.findOlderAnimal(0));
+        assertThrows(InvalidAnimalException.class, () -> animalsRepository.findOlderAnimal(-1));
+        assertThrows(InvalidAnimalException.class, () -> animalsRepository.findOlderAnimal(-100));
     }
 
     @DisplayName("Test testFindDuplicate()")
@@ -168,14 +172,16 @@ public class AnimalsRepositoryTest {
                 "Friendly", LocalDate.of(2015, 1, 1));
         Animal animal3 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
                 "Aggressive", LocalDate.of(2016, 1, 1));
-        Animal animal4 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
-                "Aggressive", LocalDate.of(2016, 1, 1));
+        Animal animal4 = new Shark("Shark", "Jawss", BigDecimal.valueOf(20),
+                "Aggressive", LocalDate.of(2017, 1, 1));
 
         when(createAnimalService.createAnimals()).thenReturn(Map.of(
-                "Cat", List.of(animal1, animal2),
+                "Cat", List.of(animal1),
+                "Dog", List.of(animal2),
                 "Shark", List.of(animal3, animal4)
         ));
 
+        // assertThrows(InsufficientAnimalsException.class, () -> animalsRepository.findMinCostAnimals());
         List<String> result = assertDoesNotThrow(() -> animalsRepository.findMinCostAnimals());
 
         String[] expectedNames = {"Barsik", "Rex", "Jaws"};
