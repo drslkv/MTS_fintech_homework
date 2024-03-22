@@ -56,10 +56,14 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @Override
     public Map<String, LocalDate> findLeapYearNames() {
-        return animals.stream()
+        return animals.parallelStream()
                 .filter(animal -> animal.getBirthDate().isLeapYear())
-                .collect(Collectors.toMap(animal -> animal.getBreed() + " " + animal.getName(),
-                        AbstractAnimal::getBirthDate));
+                .collect(Collectors.toMap(
+                        animal -> animal.getBreed() + " " + animal.getName(),
+                        AbstractAnimal::getBirthDate,
+                        (oldValue, newValue) -> oldValue,
+                        ConcurrentHashMap::new
+                ));
     }
 
     /**
@@ -73,10 +77,14 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
             throw new InvalidAnimalException("Age cannot be negative");
         }
         LocalDate currentDate = LocalDate.now();
-        return animals.stream()
+        return animals.parallelStream()
                 .filter(animal -> Period.between(animal.getBirthDate(), currentDate).getYears() > age)
-                .collect(Collectors.toMap(animal -> animal,
-                        animal -> Period.between(animal.getBirthDate(), currentDate).getYears()));
+                .collect(Collectors.toMap(
+                        animal -> animal,
+                        animal -> Period.between(animal.getBirthDate(), currentDate).getYears(),
+                        (oldValue, newValue) -> oldValue,
+                        ConcurrentHashMap::new
+                ));
     }
 
     /**
@@ -99,10 +107,12 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @Override
     public double findAverageAge() {
-        return animals.stream()
-                .mapToDouble(animal -> Period.between(animal.getBirthDate(), LocalDate.now()).getYears())
-                .average()
-                .orElse(0);
+        synchronized (animals) {
+            return animals.stream()
+                    .mapToDouble(animal -> Period.between(animal.getBirthDate(), LocalDate.now()).getYears())
+                    .average()
+                    .orElse(0);
+        }
     }
 
     /**
@@ -112,16 +122,18 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @Override
     public List<AbstractAnimal> findOldAndExpensive() {
-        double averageCost = animals.stream()
-                .mapToDouble(animal -> animal.getCost().doubleValue())
-                .average()
-                .orElse(0);
+        synchronized (animals) {
+            double averageCost = animals.stream()
+                    .mapToDouble(animal -> animal.getCost().doubleValue())
+                    .average()
+                    .orElse(0);
 
-        return animals.stream()
-                .filter(animal -> Period.between(animal.getBirthDate(), LocalDate.now()).getYears() > 5 &&
-                        animal.getCost().compareTo(BigDecimal.valueOf(averageCost)) > 0)
-                .sorted(Comparator.comparing(AbstractAnimal::getBirthDate))
-                .collect(Collectors.toList());
+            return animals.stream()
+                    .filter(animal -> Period.between(animal.getBirthDate(), LocalDate.now()).getYears() > 5 &&
+                            animal.getCost().compareTo(BigDecimal.valueOf(averageCost)) > 0)
+                    .sorted(Comparator.comparing(AbstractAnimal::getBirthDate))
+                    .collect(Collectors.toList());
+        }
     }
 
     /**
@@ -131,16 +143,17 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @Override
     public List<String> findMinCostAnimals() throws InsufficientAnimalsException {
-        int requiredSize = 3;
-        if (animals.size() < requiredSize) {
-            throw new InsufficientAnimalsException("Insufficient number of animals in the collection");
+        synchronized (animals) {
+            int requiredSize = 3;
+            if (animals.size() < requiredSize) {
+                throw new InsufficientAnimalsException("Insufficient number of animals in the collection");
+            }
+            return animals.stream()
+                    .sorted(Comparator.comparing(AbstractAnimal::getCost))
+                    .limit(requiredSize)
+                    .map(AbstractAnimal::getName)
+                    .sorted(Comparator.reverseOrder())
+                    .collect(Collectors.toList());
         }
-        return animals.stream()
-                .sorted(Comparator.comparing(AbstractAnimal::getCost))
-                .limit(requiredSize)
-                .map(AbstractAnimal::getName)
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
     }
-
 }
