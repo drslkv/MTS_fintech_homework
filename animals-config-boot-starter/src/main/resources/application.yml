@@ -1,0 +1,11 @@
+animal:
+  cat:
+    names: Barsik, Persik, Kim
+  dog:
+    names: Rex, Buddy, Rachel
+  shark:
+    names: Suzanne, Gerry, Jim
+  wolf:
+    names: Victor, Vladimir, Puffy
+
+character: Aggressive, Fierce, Friendly, Playful
