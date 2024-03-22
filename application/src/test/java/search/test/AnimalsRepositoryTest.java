@@ -10,13 +10,13 @@ import ru.mtsbank.animals.Shark;
 import ru.mtsbank.create.CreateAnimalService;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
-import ru.mtsbank.exception.InsufficientAnimalsException;
 import ru.mtsbank.exception.InvalidAnimalException;
 import ru.mtsbank.search.AnimalsRepository;
 import ru.mtsbank.search.AnimalsRepositoryImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Map;
 
@@ -113,7 +113,7 @@ public class AnimalsRepositoryTest {
         }
     }
 
-    /* @DisplayName("Test testFindAverageAge()")
+    @DisplayName("Test testFindAverageAge()")
     @Test
     public void testFindAverageAge() {
         Animal animal1 = new Cat("Cat", "Barsik", BigDecimal.ZERO,
@@ -128,6 +128,8 @@ public class AnimalsRepositoryTest {
                 "Shark", List.of(animal3)
         ));
 
+        animalsRepository.postConstruct();
+
         double averageAge = animalsRepository.findAverageAge();
 
         LocalDate currentDate = LocalDate.of(2024, 3, 18);
@@ -138,7 +140,7 @@ public class AnimalsRepositoryTest {
         ) / 3.0;
 
         assertEquals(expectedAverageAges, averageAge);
-    } */
+    }
 
     @DisplayName("Test testFindOldAndExpensive()")
     @Test
@@ -170,10 +172,10 @@ public class AnimalsRepositoryTest {
                 "Friendly", LocalDate.of(2010, 1, 1));
         Animal animal2 = new Dog("Dog", "Rex", BigDecimal.valueOf(30),
                 "Friendly", LocalDate.of(2015, 1, 1));
-        Animal animal3 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
+        Animal animal3 = new Shark("Shark", "Jaws", BigDecimal.valueOf(40),
                 "Aggressive", LocalDate.of(2016, 1, 1));
-        Animal animal4 = new Shark("Shark", "Jaws", BigDecimal.valueOf(20),
-                "Aggressive", LocalDate.of(2016, 1, 1));
+        Animal animal4 = new Shark("Shark", "Jaws Junior", BigDecimal.valueOf(100),
+                "Aggressive", LocalDate.of(2019, 1, 1));
 
         when(createAnimalService.createAnimals()).thenReturn(Map.of(
                 "Cat", List.of(animal1),
@@ -181,13 +183,14 @@ public class AnimalsRepositoryTest {
                 "Shark", List.of(animal3, animal4)
         ));
 
-        // assertThrows(InsufficientAnimalsException.class, () -> animalsRepository.findMinCostAnimals());
+        animalsRepository.postConstruct();
+
         List<String> result = assertDoesNotThrow(() -> animalsRepository.findMinCostAnimals());
 
-        String[] expectedNames = {"Barsik", "Rex", "Jaws"};
+        String[] names = {"Rex", "Jaws", "Barsik"};
 
         for (int i = 0; i < result.size(); i++) {
-            assertEquals(expectedNames[i], result.get(i));
+            assertEquals(names[i], result.get(i));
         }
     }
 }

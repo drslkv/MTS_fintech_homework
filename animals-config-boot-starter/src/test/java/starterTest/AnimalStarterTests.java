@@ -1,11 +1,13 @@
 package starterTest;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import ru.mtsbank.create.CreateAnimalService;
+import ru.mtsbank.exception.InvalidAnimalException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,5 +44,29 @@ class AnimalStarterTests {
         String wolfName = createAnimalService.getRandomName("Wolf");
         assertNotNull(wolfName);
         assertTrue(wolfName.equals("Luna") || wolfName.equals("Shadow") || wolfName.equals("Rocky"));
+    }
+
+    @Test
+    void testRandomAnimalFactory() {
+        String invalidType = "InvalidType";
+        assertThrows(InvalidAnimalException.class, () -> {
+            createAnimalService.getRandomAnimalFactory(invalidType);
+        });
+    }
+
+    @Test
+    void testCreateAnimalsWithNegativeNumber() {
+        int negativeNumber = -1;
+        assertThrows(IllegalArgumentException.class, () -> {
+            createAnimalService.createAnimals(negativeNumber);
+        });
+    }
+
+    @Test
+    void testCreateAnimalsWithZeroNumber() {
+        int zeroNumber = 0;
+        assertThrows(IllegalArgumentException.class, () -> {
+            createAnimalService.createAnimals(zeroNumber);
+        });
     }
 }
