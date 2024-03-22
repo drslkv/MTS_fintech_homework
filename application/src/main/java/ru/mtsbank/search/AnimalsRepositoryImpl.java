@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +29,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @ConstructorProperties({"ru/mtsbank/animals"})
     public AnimalsRepositoryImpl(CreateAnimalService createAnimalService) {
-        this.animals = new ArrayList<>();
+        this.animals = new CopyOnWriteArrayList<>();
         this.createAnimalService = createAnimalService;
     }
 
@@ -85,13 +87,9 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     @Override
     public Map<String, List<Animal>> findDuplicate() {
         return animals.stream()
-                .collect(Collectors.groupingBy(animal -> animal.getName() + " " + animal.getCharacter()))
-                .entrySet().stream()
-                .filter(entry -> entry.getValue().size() > 1)
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> entry.getValue().stream().map(animal -> (Animal) animal).collect(Collectors.toList())
-                ));
+                .collect(Collectors.groupingBy(animal -> animal.getName() + " " + animal.getCharacter(),
+                        ConcurrentHashMap::new,
+                        Collectors.toList()));
     }
 
     /**

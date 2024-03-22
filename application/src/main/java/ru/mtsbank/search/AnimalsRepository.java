@@ -13,7 +13,6 @@ public interface AnimalsRepository {
     Map<String, LocalDate> findLeapYearNames();
     Map<AbstractAnimal, Integer> findOlderAnimal(int age);
     Map<String, List<Animal>> findDuplicate();
-
     double findAverageAge();
     List<AbstractAnimal> findOldAndExpensive();
     List<String> findMinCostAnimals() throws InsufficientAnimalsException;
