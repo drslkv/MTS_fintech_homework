@@ -38,7 +38,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @PostConstruct
     public void postConstruct() {
-        Map<String, List<Animal>> createdAnimals = createAnimalService.createAnimals();
+        Map<String, List<Animal>> createdAnimals = createAnimalService.createAnimals(20);
 
         System.out.println("CREATE");
         createdAnimals.forEach((type, animalList) -> {

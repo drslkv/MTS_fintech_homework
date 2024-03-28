@@ -27,10 +27,14 @@ import static org.mockito.Mockito.when;
 public class AnimalsRepositoryTest {
     private CreateAnimalService createAnimalService;
     private AnimalsRepository animalsRepository;
+    private AnimalsRepositoryImpl animalsRepositoryImpl;
+
     @BeforeEach
     public void setUp() {
         createAnimalService = mock(CreateAnimalService.class);
         animalsRepository = new AnimalsRepositoryImpl(createAnimalService);
+
+        animalsRepositoryImpl = new AnimalsRepositoryImpl(createAnimalService);
     }
 
     @DisplayName("Test testFindLeapYearNames()")
@@ -84,10 +88,19 @@ public class AnimalsRepositoryTest {
 
             assertTrue(animalAge > age);
         }
+    }
 
-        assertDoesNotThrow(() -> animalsRepository.findOlderAnimal(0));
+    @DisplayName("Test testNegativeNumberFindOlderAnimal()")
+    @Test
+    public void testNegativeNumberFindOlderAnimal() {
         assertThrows(InvalidAnimalException.class, () -> animalsRepository.findOlderAnimal(-1));
         assertThrows(InvalidAnimalException.class, () -> animalsRepository.findOlderAnimal(-100));
+    }
+
+    @DisplayName("Test testZeroNumberFindOlderAnimal()")
+    @Test
+    public void testZeroNumberFindOlderAnimal() {
+        assertDoesNotThrow(() -> animalsRepository.findOlderAnimal(0));
     }
 
     @DisplayName("Test testFindDuplicate()")
@@ -116,11 +129,11 @@ public class AnimalsRepositoryTest {
     @DisplayName("Test testFindAverageAge()")
     @Test
     public void testFindAverageAge() {
-        Animal animal1 = new Cat("Cat", "Barsik", BigDecimal.ZERO,
+        Animal animal1 = new Cat("Cat", "Barsik", BigDecimal.valueOf(100),
                 "Friendly", LocalDate.of(2010, 1, 1));
-        Animal animal2 = new Cat("Cat", "Barsik", BigDecimal.ZERO,
+        Animal animal2 = new Cat("Cat", "Barsik", BigDecimal.valueOf(200),
                 "Friendly", LocalDate.of(2015, 5, 10));
-        Animal animal3 = new Shark("Shark", "Jaws", BigDecimal.ZERO,
+        Animal animal3 = new Shark("Shark", "Jaws", BigDecimal.valueOf(150),
                 "Aggressive", LocalDate.of(2020, 10, 20));
 
         when(createAnimalService.createAnimals()).thenReturn(Map.of(
@@ -128,15 +141,15 @@ public class AnimalsRepositoryTest {
                 "Shark", List.of(animal3)
         ));
 
-        animalsRepository.postConstruct();
+        animalsRepositoryImpl.postConstruct();
 
         double averageAge = animalsRepository.findAverageAge();
 
         LocalDate currentDate = LocalDate.of(2024, 3, 18);
         double expectedAverageAges = (
                 Period.between(LocalDate.of(2010, 1, 1), currentDate).getYears() +
-                Period.between(LocalDate.of(2015, 5, 10), currentDate).getYears() +
-                Period.between(LocalDate.of(2020, 10, 20), currentDate).getYears()
+                        Period.between(LocalDate.of(2015, 5, 10), currentDate).getYears() +
+                        Period.between(LocalDate.of(2020, 10, 20), currentDate).getYears()
         ) / 3.0;
 
         assertEquals(expectedAverageAges, averageAge);
@@ -183,7 +196,7 @@ public class AnimalsRepositoryTest {
                 "Shark", List.of(animal3, animal4)
         ));
 
-        animalsRepository.postConstruct();
+        animalsRepositoryImpl.postConstruct();
 
         List<String> result = assertDoesNotThrow(() -> animalsRepository.findMinCostAnimals());
 

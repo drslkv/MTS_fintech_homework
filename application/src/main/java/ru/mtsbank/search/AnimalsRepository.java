@@ -16,5 +16,4 @@ public interface AnimalsRepository {
     double findAverageAge();
     List<AbstractAnimal> findOldAndExpensive();
     List<String> findMinCostAnimals() throws InsufficientAnimalsException;
-    public void postConstruct();
 }

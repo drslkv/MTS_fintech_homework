@@ -9,14 +9,54 @@ import ru.mtsbank.search.AnimalsRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class ScheduledTasks {
     private final AnimalsRepository animalsRepository;
 
+    private final ExecutorService executorService = Executors.newFixedThreadPool(2);
+
     public ScheduledTasks(AnimalsRepository animalsRepository) {
         this.animalsRepository = animalsRepository;
+
+        startPrintDuplicateThread();
+        startFindAverageAgeThread();
     }
+
+    public void startPrintDuplicateThread() {
+        executorService.submit(() -> {
+            Map<String, List<Animal>> duplicateAnimals = animalsRepository.findDuplicate();
+            Thread.currentThread().setName("PrintDuplicateThread");
+            System.out.println("PrintDuplicateThread started");
+            try {
+                while (true) {
+                    animalsRepository.findDuplicate();
+                    duplicateAnimals.forEach((type, count) -> System.out.println(type + ": " + count));
+                    TimeUnit.SECONDS.sleep(10);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+    }
+
+    private void startFindAverageAgeThread() {
+        executorService.submit(() -> {
+            Thread.currentThread().setName("FindAverageAgeThread");
+            try {
+                while (true) {
+                    animalsRepository.findAverageAge();
+                    TimeUnit.SECONDS.sleep(20);
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+    }
+
     @Scheduled(fixedRate = 60000)
     public void printAnimals() {
         try {
@@ -37,7 +77,7 @@ public class ScheduledTasks {
             olderAnimals.forEach((animal, age) -> System.out.println(animal + ", age: " + age));
 
             System.out.println("\nDuplicate animals: ");
-            duplicateAnimals.forEach((type, count) -> System.out.println(type + ": " + count));
+            startPrintDuplicateThread();
 
             System.out.println("\nAverage age of all animals: " + averageAge);
 
