@@ -1,70 +1,63 @@
 package ru.mtsbank.scheduler;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.mtsbank.description.AbstractAnimal;
 import ru.mtsbank.description.Animal;
 import ru.mtsbank.search.AnimalsRepository;
 
+import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Component
 public class ScheduledTasks {
     private final AnimalsRepository animalsRepository;
 
-    private final ExecutorService executorService = Executors.newFixedThreadPool(2);
+    private final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
 
     public ScheduledTasks(AnimalsRepository animalsRepository) {
         this.animalsRepository = animalsRepository;
+    }
 
+    @PostConstruct
+    public void init() {
         startPrintDuplicateThread();
         startFindAverageAgeThread();
     }
 
+    @Async
     public void startPrintDuplicateThread() {
-        executorService.submit(() -> {
-            Map<String, List<Animal>> duplicateAnimals = animalsRepository.findDuplicate();
+        executorService.scheduleAtFixedRate(() -> {
             Thread.currentThread().setName("PrintDuplicateThread");
-            System.out.println("PrintDuplicateThread started");
-            try {
-                while (true) {
-                    animalsRepository.findDuplicate();
-                    duplicateAnimals.forEach((type, count) -> System.out.println(type + ": " + count));
-                    TimeUnit.SECONDS.sleep(10);
-                }
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        });
+            System.out.println("\nDuplicate animals: ");
+            Map<String, List<Animal>> duplicateAnimals = (Map<String, List<Animal>>) animalsRepository.findDuplicate();
+            duplicateAnimals.forEach((type, count) -> System.out.println(type + ": " + count));
+        }, 0, 20, TimeUnit.SECONDS);
     }
 
-    private void startFindAverageAgeThread() {
-        executorService.submit(() -> {
+    @Async
+    public void startFindAverageAgeThread() {
+        executorService.scheduleAtFixedRate(() -> {
             Thread.currentThread().setName("FindAverageAgeThread");
-            try {
-                while (true) {
-                    animalsRepository.findAverageAge();
-                    TimeUnit.SECONDS.sleep(20);
-                }
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        });
+            System.out.println("\nAverage age of all animals: ");
+            System.out.println(animalsRepository.findAverageAge());
+        }, 0, 10, TimeUnit.SECONDS);
     }
 
+    @Async
     @Scheduled(fixedRate = 60000)
     public void printAnimals() {
         try {
             Map<String, LocalDate> leapYearNames = animalsRepository.findLeapYearNames();
             Map<AbstractAnimal, Integer> olderAnimals = animalsRepository.findOlderAnimal(8);
-            Map<String, List<Animal>> duplicateAnimals = animalsRepository.findDuplicate();
 
-            double averageAge = animalsRepository.findAverageAge();
             List<AbstractAnimal> oldAndExpensiveAnimals = animalsRepository.findOldAndExpensive();
             List<String> minCostAnimals = animalsRepository.findMinCostAnimals();
 
@@ -75,11 +68,6 @@ public class ScheduledTasks {
 
             System.out.println("\nOlder animals: ");
             olderAnimals.forEach((animal, age) -> System.out.println(animal + ", age: " + age));
-
-            System.out.println("\nDuplicate animals: ");
-            startPrintDuplicateThread();
-
-            System.out.println("\nAverage age of all animals: " + averageAge);
 
             System.out.println("\nOld and expensive animals: ");
             oldAndExpensiveAnimals.forEach(System.out::println);

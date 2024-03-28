@@ -58,7 +58,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     public Map<String, LocalDate> findLeapYearNames() {
         return animals.parallelStream()
                 .filter(animal -> animal.getBirthDate().isLeapYear())
-                .collect(Collectors.toMap(
+                .collect(Collectors.toConcurrentMap(
                         animal -> animal.getBreed() + " " + animal.getName(),
                         AbstractAnimal::getBirthDate,
                         (oldValue, newValue) -> oldValue,
@@ -79,7 +79,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         LocalDate currentDate = LocalDate.now();
         return animals.parallelStream()
                 .filter(animal -> Period.between(animal.getBirthDate(), currentDate).getYears() > age)
-                .collect(Collectors.toMap(
+                .collect(Collectors.toConcurrentMap(
                         animal -> animal,
                         animal -> Period.between(animal.getBirthDate(), currentDate).getYears(),
                         (oldValue, newValue) -> oldValue,
@@ -94,10 +94,17 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
      */
     @Override
     public Map<String, List<Animal>> findDuplicate() {
-        return animals.stream()
-                .collect(Collectors.groupingBy(animal -> animal.getName() + " " + animal.getCharacter(),
-                        ConcurrentHashMap::new,
-                        Collectors.toList()));
+        return animals.parallelStream()
+                .collect(Collectors.groupingByConcurrent(
+                        animal -> animal.getName() + " " + animal.getCharacter(),
+                        Collectors.toCollection(CopyOnWriteArrayList::new)
+                ))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue().size() > 1)
+                .collect(Collectors.toConcurrentMap(
+                        Map.Entry::getKey,
+                        entry -> new CopyOnWriteArrayList<>(entry.getValue())
+                ));
     }
 
     /**

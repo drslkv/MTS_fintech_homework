@@ -118,7 +118,7 @@ public class AnimalsRepositoryTest {
                 "Shark", List.of(animal3)
         ));
 
-        Map<String, List<Animal>> duplicateMap = animalsRepository.findDuplicate();
+        Map<String, List<Animal>> duplicateMap = (Map<String, List<Animal>>) animalsRepository.findDuplicate();
 
         for (List<Animal> animals : duplicateMap.values()) {
             assertEquals(2, animals.size());
